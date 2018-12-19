@@ -1,12 +1,13 @@
 /*
- * Author: Rambabu Yerajana
- * Text:   CLRS  Third Edition
- * Topic:  Dynamic Programming
- * Problem: The rod-cutting problem is the following. Given a rod of length n inches and 
- *          a table of prices pi for i D 1;2; : : : ;n, determine the maximum revenue rn 
- *          obtainable by cutting up the rod and selling the pieces. Note that if the 
- *          price pn for a rod of length n is large enough, an optimal solution may require 
- *          no cutting at all.
+ * Author:        Rambabu Yerajana
+ * Text:          CLRS  Third Edition
+ * Topic:         Dynamic Programming
+ * Statement:     rod-cutting Problem
+ * Description:   The rod-cutting problem is the following. Given a rod of length n inches and 
+ *                a table of prices pi for i D 1;2; : : : ;n, determine the maximum revenue rn 
+ *                obtainable by cutting up the rod and selling the pieces. Note that if the 
+ *                price pn for a rod of length n is large enough, an optimal solution may require 
+ *                no cutting at all.
  * */
 
 #include<iostream>
