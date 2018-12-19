@@ -1,3 +1,12 @@
+
+/*
+ * Author: Rambabu Yerajana
+ * Text:   HackerRank 
+ * Topic:  Puzzle 
+ * Statement: Array Left Rotation
+ * Description:.
+ * */
+
 #include <map>
 #include <set>
 #include <list>

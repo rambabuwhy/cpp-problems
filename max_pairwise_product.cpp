@@ -3,8 +3,8 @@
  * Author: Rambabu Yerajana
  * Text:   Algorithm Tool Box 
  * Topic:  Puzzle 
- * Problem Statement: Maximum Pairwise Product Problem
- * Problem Description: Find the maximum product of two distinct numbers
+ * Statement: Maximum Pairwise Product Problem
+ * Description: Find the maximum product of two distinct numbers
  *          in a sequence of non-negative integers..
  * */
 #include <iostream>
