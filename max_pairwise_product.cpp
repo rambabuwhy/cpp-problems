@@ -4,8 +4,8 @@
  * Text:   Algorithm Tool Box 
  * Topic:  Puzzle 
  * Statement: Maximum Pairwise Product Problem
- * Description: Find the maximum product of two distinct numbers
- *          in a sequence of non-negative integers..
+ * Description: Your goal in this problem is to find the last digit of 𝑛-th
+ * Fibonacci number.
  * */
 #include <iostream>
 #include <vector>
