@@ -37,6 +37,8 @@ long long fibonacci_naive(int n) {
 
 long long  fibonacci_fast( int n) {
     // write your code here
+       if (n <= 1)
+          return n;
        vector<long long > fa(n+2);
        fa[0] = 0;
        fa[1] = 1;
@@ -50,6 +52,8 @@ long long  fibonacci_fast( int n) {
 
 long long  fibonacci_fast_s( int n) {
     // write your code here
+      if (n <= 1)
+        return n;
       long long first = 0;
       long long second = 1;
        for ( int i = 2 ; i <= n ; i++)
