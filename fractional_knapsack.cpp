@@ -165,7 +165,7 @@ double get_Naive_value(long long  capacity, vector<long long > weights, vector<l
 }
 int main() {
 
-#define __STRESS_TEST__
+//#define __STRESS_TEST__
 
   long long n;
   long long capacity;
