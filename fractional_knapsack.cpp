@@ -54,42 +54,51 @@ double get_optimal_value(long long  capacity, vector<long long > weights, vector
   multimap<long double,long long >i_vow;
   for(int i = 0;i < weights.size() ;i ++)
   {
-    vow[i] = (long double)values[i]/(long double)weights[i];
+    vow[i] = (long double)values[i]/weights[i];
     i_vow.insert ( std::pair<long double,long long >(vow[i],weights[i]) );
     //m_print(i_vow);
   }
-  //cout<<"----------BEFORE SORT-------------------"<<endl;
-  //v_print(vow);
-  //cout<<"-----------------------------"<<endl;
-  //m_print(i_vow);
-  //cout<<"-----------------------------"<<endl;
+  /*
+  cout<<"----------BEFORE SORT-------------------"<<endl;
+  v_print(vow);
+  cout<<"-----------------------------"<<endl;
+  m_print(i_vow);
+  cout<<"-----------------------------"<<endl;
+  */
   //cout<<"  Map at: "<<i_vow[2]<<end;
-  std::sort(vow.begin(), vow.end(), std::greater<int>());
+  std::sort(vow.begin(), vow.end(), std::greater<long double>());
   //cout<<" Total Capacity: "<<capacity<<endl;
-  //cout<<"------AFTER SORT-----------------------"<<endl;
-  //v_print(vow);
-  //cout<<"-----------------------------"<<endl;
-  //m_print(i_vow);
-  //cout<<"-----------------------------"<<endl;
+  /*
+  cout<<"------AFTER SORT-----------------------"<<endl;
+  v_print(vow);
+  cout<<"-----------------------------"<<endl;
+  m_print(i_vow);
+  cout<<"-----------------------------"<<endl;
+  */
   for(int i = 0; i < weights.size(); i++ )
   {
     if(capacity <=0)  break;
     std::multimap<long double,long long>::iterator it = i_vow.find(vow[i]);
     long double a  = std::min((long double)capacity,(long double)it->second);
-    //cout<<"-----------BEFORE PROCESS-----------"<<endl;
-    //cout<<" cpacity: "<< capacity;
-    //cout<<" itr: "<< it->second;
-    //cout<< " Minimum: "<<a;
-    //cout<< " value: "<<value;
-    //cout<<endl;
+    /*
+    cout<<"-----------BEFORE PROCESS-----------"<<endl;
+    cout<<" cpacity: "<< capacity;
+    cout<<" itr: "<< it->second;
+    cout<< " Minimum: "<<a;
+    cout<< " value: "<<value;
+    cout<< " vow: "<<vow[i];
+    cout<<endl;
+    */
     value = value + a * vow[i];
     capacity = capacity - a; 
-    //cout<<"-----------AFTER PROCESS-----------"<<endl;
-    //cout<<" cpacity: "<< capacity;
-    //cout<<" itr: "<< it->second;
-    //cout<< " Minimum: "<<a;
-    //cout<< " value: "<<value;
-    //cout<<endl;
+    /*
+    cout<<"-----------AFTER PROCESS-----------"<<endl;
+    cout<<" cpacity: "<< capacity;
+    cout<<" itr: "<< it->second;
+    cout<< " Minimum: "<<a;
+    cout<< " value: "<<value;
+    cout<<endl;
+    */
     i_vow.erase(it);
 
   }
@@ -102,20 +111,20 @@ long long get_next_vow(vector<long long>weights,vector<long long>values)
 {
   long double max = 0.0;
   long long index = -1;
-  for(int i =0 ;i < weights.size() ;i++)
+  for(int i = 0 ;i < weights.size() ;i++)
   {
     if(weights[i])
     {
       long double vow = (long double) values[i] / weights[i];
       //cout<<" vow: "<< vow ;
-      if( max < (values[i] / weights[i]))
+      if( max < vow)
       {
         index = i;
-        max =(long double) values[i] / weights[i];
+        max = vow;
       }
     }
   }
- // cout <<" max: "<<max<<"  , "<<index<<endl;
+  //cout <<" max v/w: "<<max<<"  , index:"<<index<<endl;
   return index;
 
 }
@@ -126,16 +135,29 @@ double get_Naive_value(long long  capacity, vector<long long > weights, vector<l
   // write your code here
   for(int i = 0; i < weights.size(); i++ )
   {
-    if(capacity <=0)  break;
+    //cout<<"i->"<<i<<endl;
+    if(capacity <= 0)  
+    {
+      //cout<<"**** Knapsack FULL ****** "<<endl;
+      break;
+    }
     long long index = get_next_vow(weights,values);
+    //cout<<"index: "<<index<<endl;
+    if(index < 0 ) break;
     long double max_vow = (long double) values[index] / weights[index];
     long double a  = std::min((long double)capacity,(long double)weights[index]);
-    //cout<<" a: "<<a<<endl;
-    //cout<<" max_vow: "<<max_vow<<endl;
+    /*
+    cout<<"a: "<<a<<endl;
+    cout<<"index: "<<index<<endl;
+    cout<<"max_vow: "<<max_vow<<endl;
+    cout<<"Fill Weight: "<< a <<" of " <<weights[index];
+    */
     value = value + a * max_vow;
+    //cout<<"Value: "<< value ;
     capacity = capacity - a; 
     values[index]= 0.0;
     weights[index] =  0.0;
+    //cout<<"------"<<endl;
 
   }
 
@@ -164,33 +186,36 @@ int main() {
 //STRESS TEST
   while(true)
   {
-    long long  n = rand() % 3 + 1 ;
-    long long  capacity = rand() % 500 + 1;
+    long long  n = rand() % 3  ;
+    long long  capacity = rand() % 10 ;
     
     vector<long long > values(n);
     vector<long long > weights(n);
 
     for (int i = 0; i < n; i++) {
-      long long  value = rand() % 5000 + 501 ;
-      long long  weight = rand() % 500 + 1 ;
+      long long  value = rand() % 50  ;
+      long long  weight = rand() % 10 + 1  ;
       values[i]= value;
       weights[i] = weight;
     }
-
+    //cout<<"-------------- Started Stress Test ----- "<<endl;
     long double naive =  get_Naive_value(capacity,weights,values);
+    //cout<<"======================>  Naive: "<<naive<<endl<<"... Naive Completed ..."<<endl;
     long double fast = get_optimal_value(capacity, weights, values);
+    //cout<<"======================>  fast: "<<fast<<endl <<"... fast Completed ..."<<endl;
 
-      cout << " --------------------------"<<endl;
-      cout<<" N: "<<n <<" , "<<" Capacity: "<<capacity<<endl;
-    for(int i =0 ; i < n ; i++)
-    {
-      cout<<values[i]<<" , "<<weights[i] <<endl;
-    }
-      cout << " --------------------------"<<endl;
 
     if( naive != fast)
     {
+      cout << "-------------------------------------------------------"<<endl;
+      cout<< "Capacity: "<<capacity<<endl;
+      cout<< "N: "<<n<<endl;
+      for(int i =0 ; i < n ; i++)
+      {
+        cout<<values[i]<<" , "<<weights[i] <<endl;
+      }
       cout<<" Wrong Answer: " << naive <<" , "<<fast<<endl;
+      cout << "-------------------------------------------------------"<<endl;
       return 0;
     }
     else
