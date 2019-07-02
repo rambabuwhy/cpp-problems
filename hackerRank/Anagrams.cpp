@@ -1,3 +1,13 @@
+
+
+
+/*
+ * Author: Rambabu Yerajana
+ * Text:   HackerRank 
+ * Topic:  Puzzle 
+ * Statement: Anagrams 
+ * Description: Anagrams 
+ * */
 #include <map>
 #include <set>
 #include <list>
