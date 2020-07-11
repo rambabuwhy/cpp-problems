@@ -1,0 +1,42 @@
+class Solution {
+public:
+    int islandPerimeter(vector<vector<int>>& grid) {
+        
+        int R = grid.size();
+        int C = grid[0].size();
+        int up = 0, down =0, left =0, right =0;
+        int result = 0;
+        
+        for(int r = 0; r<R; r++){
+            for(int c = 0; c<C; c++){
+                
+                if(grid[r][c] == 1){
+                
+                    //top 
+                    if(r == 0) up = 0 ;
+                    else up = grid[r-1][c];
+
+                    //left
+                    if(c == 0) left = 0;
+                    else left = grid[r][c-1];
+
+                    //right
+
+                    if(c == C-1)  right = 0;
+                    else right = grid[r][c+1];
+
+                    //down
+                    if(r == R-1) down = 0;
+                    else down = grid[r+1][c];
+
+                    result = result + ( 4 - (up+down+left+right));
+                }
+                
+                
+            }
+        }
+        
+        return result;
+        
+    }
+};
