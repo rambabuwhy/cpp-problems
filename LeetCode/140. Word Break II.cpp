@@ -38,31 +38,47 @@ Out
 
 class Solution {
 public:
+    
+    //map for memoization
     unordered_map<string,vector<string>> mp;
+    
     vector<string> wordBreak(string s, vector<string>& wordDict) {
         
-        if(mp.count(s)) return mp[s];
+        //resutn if we found sublist for  postfix substring
+        if(mp.find(s) != mp.end()){
+            return mp[s];            
+        } 
         
-        
+        //result vector
         vector<string> result;
         
+        //add if found string in dictionary
         if(find(wordDict.begin(),wordDict.end(),s) != wordDict.end()) { 
             result.push_back(s);
         }
         
+        //divide  prefix + remaining string
         for(int i = 1; i<s.size();  ++i){
+            
+            //prefix
             string first=s.substr(i);
+            
+            //if prefix is in dictionary
             if(find(wordDict.begin(),wordDict.end(),first) != wordDict.end()) {
                 
+                //recursive for remianing substring 
                 string rem=s.substr(0,i);
                 vector<string> subList = wordBreak(rem,wordDict);
                 
+                // add prefix + remaining sublist
                 for(auto last:subList){
                     result.insert(result.end(), last + " " + first);
                     
                 }
               }
         }
+        
+        //save for  memoization
         
         mp[s]=result;
         
