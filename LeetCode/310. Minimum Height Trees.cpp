@@ -10,41 +10,7 @@ The height of a rooted tree is the number of edges on the longest downward path 
 
 */
 
-  pair<int,int> sc;
-    for(int i = 0 ; i <P.size();i++){
-        sc = addWord(P[i],sum,cnt);
-    }
-
-    int B = sc.first/sc.second;
-
-    sum = 0, cnt=0,A=0;
-
-
-
-    for(int i = 0 ; i <P.size(); i++){
-
-        sc = addWord(P[i],sum,cnt);
-        int found =
-
-
-    }
-	
-	
-	 std::size_t found =  P[i].word.find('.');
-
-        if (found!=std::string::npos){
-		
-		
-		
-		1. GCP URI  based along ith websocket
-		2. bring up  with  lws  uri   config  in GCP
-		3. replace nginx same as in SSHD
-		
-		
-		
-		
-		
-		class Solution {
+ class Solution {
 public:
     vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
         
@@ -70,7 +36,7 @@ public:
         }
         
         
-        //BFS
+        //1.BFS 2.remove leafs/ degree 1  2. return root nodes
         while (!result.empty()) {
           vector<int> curr;
           for (int node : result) {
