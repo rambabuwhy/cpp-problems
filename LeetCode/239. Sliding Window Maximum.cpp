@@ -52,8 +52,8 @@ public:
             
             
             // clean the deque  step 1:
-            //remove indexes of elements not from sliding window
-            //Keep only the indexes of elements from the current sliding window.
+            // remove indexes of elements not from sliding window
+            // Keep only the indexes of elements from the current sliding window.
             if (!dq.empty() && dq.front() == i-k) 
             dq.pop_front();
             
