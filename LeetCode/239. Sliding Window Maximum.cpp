@@ -40,7 +40,7 @@ Output: [4]
  
 */
  
- class Solution {
+class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         
@@ -49,12 +49,17 @@ public:
         
         for (int i=0; i<nums.size(); i++) {
             
-            // remove indexes of elements not from sliding window
+            
+            
+            // clean the deque  step 1:
+            //remove indexes of elements not from sliding window
+            //Keep only the indexes of elements from the current sliding window.
             if (!dq.empty() && dq.front() == i-k) 
             dq.pop_front();
             
-            // remove from deq indexes of all elements 
-            // which are smaller than current element nums[i]
+            // clean the deque step 2:
+            // remove from deq indexes of all elements, which are smaller than current element nums[i]
+            // Remove indexes of all elements smaller than the current one, since they will not be the maximum ones.
             while (!dq.empty() && nums[dq.back()] < nums[i])
             dq.pop_back();
             
