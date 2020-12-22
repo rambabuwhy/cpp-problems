@@ -16,16 +16,11 @@ public:
         int in_start = 0;
         int in_end = inorder.size();
         
-        int pre_start = 0;
-        int pre_end = preorder.size()-1;
-        
         for(int i = 0; i<inorder.size(); i++){
             M[inorder[i]] = i;
         }
         
-        pre_index = 0;
-        
-                
+        pre_index = 0;        
         TreeNode* root = util(preorder, inorder, in_start, in_end);
         return root;
     }
@@ -37,16 +32,13 @@ public:
         if(in_start == in_end)
         return nullptr;
         
-        int root_val = preorder[pre_index];
+        int root_val = preorder[pre_index++];
         TreeNode* root = new TreeNode(root_val);
         
         int divide_index = M[root_val];
-               
-        pre_index++;
         
         root->left = util(preorder, inorder, in_start, divide_index);
         root->right = util(preorder, inorder, divide_index+1, in_end);
-        
         
         return root;
     }
