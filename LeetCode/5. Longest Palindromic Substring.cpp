@@ -20,33 +20,45 @@ public:
         if(s.length()<=1){
             return s;
         }
-
+        
         vector<vector<bool>> dp(s.length(),vector<bool>(s.length()));
         string result;
-        int maxLen=0;
-        for(int i=0;i<s.length();i++){
+        int maxLength=0;
+        
+        //store single char in result
+        //no need to store all  single char: first single char as result of length 1
+        for(int i=0; i<s.length(); i++){
+            
             dp[i][i]=true;
-            if(maxLen < 1){
+            
+            if(maxLength < 1){
                 result=s[i];
-                maxLen=1;
+                maxLength=1;
+                               
             }
+            
         }
 
-        for(int i=s.length()-1;i>=0;i--){
-            for(int j=i+1;j<s.length();j++){
-                if(s[i]==s[j]){
-                    if(dp[i+1][j-1] || (j-i)==1){
-                        dp[i][j]=true;
-                        if(maxLen<j-i+1){
-                            cout<<"j-i:"<<j-i+1<<endl;
-                            result=s.substr(i,j-i+1);
-                            maxLen=max(maxLen,j-i+1);
+        for(int startIndex = s.length()-1; startIndex>=0; startIndex--){
+            for(int endIndex = startIndex+1;  endIndex<s.length();  endIndex++){
+                //palindrome : compare last two char
+                if(s[startIndex]==s[endIndex]){ 
+                    //then remaining string should be palindrome
+                    if( dp[startIndex+1][endIndex-1] || (endIndex-startIndex)==1) {  
+                        dp[startIndex][endIndex]=true;
+                        if(maxLength < endIndex-startIndex+1){
+                            result=s.substr(startIndex, endIndex-startIndex+1);
+                            maxLength=max(maxLength, endIndex-startIndex+1);
 
                         }
+                    
                     }
+                    
                 }
+               
             }
         }
         return result;
+        
     }
 };
