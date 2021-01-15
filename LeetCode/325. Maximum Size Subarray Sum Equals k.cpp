@@ -33,22 +33,16 @@ public:
             
             //from i=0 found sum
             if(csum == k){
-                maxSize = i +1;
-                    
-            }
-            
+            maxSize = i +1;
+        
+             //store all sum and index i
+            if(umap.find(csum) == umap.end())
+            map[csum] = i;
+         
             //i - umap[csum-k]
-            if(umap.find(csum-k) != umap.end()){
-                maxSize= max(maxSize, i- umap[csum -k]);
-                
-            }
-            
-            //store all sum and index i
-            if(umap.find(csum) == umap.end()){
-                
-                umap[csum] = i;
-                
-            }            
+            if(umap.find(csum-k) != umap.end())
+            maxSize= max(maxSize, i- umap[csum -k]);
+                   
         }
         
         return maxSize;
