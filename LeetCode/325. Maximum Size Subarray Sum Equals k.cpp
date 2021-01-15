@@ -32,12 +32,12 @@ public:
             csum = csum + nums[i];
             
             //from i=0 found sum
-            if(csum == k){
+            if(csum == k)
             maxSize = i +1;
         
              //store all sum and index i
             if(umap.find(csum) == umap.end())
-            map[csum] = i;
+            umap[csum] = i;
          
             //i - umap[csum-k]
             if(umap.find(csum-k) != umap.end())
