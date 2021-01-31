@@ -12,6 +12,7 @@ If no valid conversion could be performed, a zero value is returned.
 
 */
 
+
 class Solution {
 public:
     int myAtoi(string str) {
@@ -39,14 +40,16 @@ public:
         
         //logic
         while(isdigit(str[index])){
-             int digit = str[index++]-'0';
+             
+            int digit = str[index++]-'0';
           
             if (result > INT_MAX/10 || (result == INT_MAX / 10 && digit > 7)){
                     if (neg) return INT_MIN;
                     else return INT_MAX;
             }
             result = result * 10 + digit;
-          }
+        }
+        
         if(neg) {
             result=-result;
         }
