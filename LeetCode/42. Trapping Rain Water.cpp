@@ -9,36 +9,27 @@ public:
     int trap(vector<int>& height) {
         
         //base
-        if(height.size() == 0) return 0;
-        vector<int> &H = height;
+        if( height.size() == 0 ) return 0;
         
-        
-        
-        vector<int> L(H.size());
-        vector<int> R(H.size());
+        vector<int> left (height.size());
+        vector<int> right (height.size());
         int result=0;
+       
+        //fill Left side max height
+        left[0]=height[0];
+        for(int i = 1; i<height.size(); i++)
+        left[i] = max(height[i], left[i-1]);
         
+        //fill Right side  max height
+        right[height.size()-1]= height[height.size()-1];
+        for(int i = height.size()-2; i>=0 ;i--)
+        right[i] = max (height[i], right[i+1]);
         
-        //fill L
-        L[0]=H[0];
-        for(int i = 1;i<H.size();i++)
-        L[i] = max(H[i],L[i-1]);
-        
-        //fill R
-        R[H.size()-1]=H[H.size()-1];
-        for(int i = H.size()-2;i>=0;i--)
-        R[i] = max(H[i],R[i+1]);
-        
-        
-        //find result
-        for(int i = 0;i<H.size();i++)
-        result = result + min (L[i],R[i]) - H[i];
-        
-        
+       //find result  min of left and right
+        for(int i = 0; i<height.size(); i++)
+        result = result + min(left[i], right[i])  - height[i];
+         
         return result;
-        
-        
-        
-        
+          
     }
 };
