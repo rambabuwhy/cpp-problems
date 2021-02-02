@@ -36,9 +36,7 @@ public:
 
 class Solution {
 public:
-    
-    unordered_map<Node*, Node*> umap;
-    
+ 
     Node* cloneGraph(Node* node) {
         
         if(node == nullptr)
@@ -47,6 +45,7 @@ public:
         queue<Node*> Q;
         Q.push(node);
         
+        unordered_map<Node*, Node*> umap;
         umap[node] =new Node(node->val);
         
         while(!Q.empty()){
