@@ -45,7 +45,9 @@ public:
         queue<Node*> Q;
         Q.push(node);
         
-        unordered_map<Node*, Node*> umap;
+        //map contains root node of two graphs
+        //map<oldRoot, newRoot>
+        unordered_map<Node*, Node*> umap; 
         umap[node] =new Node(node->val);
         
         while(!Q.empty()){
