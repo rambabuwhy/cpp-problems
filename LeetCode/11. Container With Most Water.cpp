@@ -15,7 +15,9 @@ public:
         
         while(left < right){
             
-            maxArea = max(maxArea, min(height[left],height[right])*(right-left));
+            int min_height = min(height[left],height[right]);
+            int curr_area = min_height * (right-left);
+            maxArea = max(maxArea, curr_area);
             
             if(height[left] < height[right]) 
             left++;
