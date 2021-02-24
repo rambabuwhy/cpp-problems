@@ -21,16 +21,21 @@ Explanation: The answer is "wke", with the length of 3.
 
 class Solution {
 public:
+    //sliding window
     int lengthOfLongestSubstring(string s) {
         int maxlen = 0;
-        int ws = 0;
-        unordered_map<char,int> cc;
-        for(int we = 0; we < s.length(); we++){
-            if(cc.find(s[we]) != cc.end()){
-                ws=max(ws,cc[s[we]]+1);
+        int wstart = 0;
+        //char to last index position.
+        unordered_map<char,int> ccMap;
+        
+        for(int wend = 0; wend < s.length(); wend++){
+            
+            if(ccMap.find(s[wend]) != ccMap.end()){
+                wstart = max(wstart,ccMap[s[wend]]+1);    
             }
-            cc[s[we]]=we;
-            maxlen=max(maxlen,we-ws+1);
+            
+            ccMap[s[wend]]=wend; 
+            maxlen = max(maxlen, wend-wstart+1);
         }
         return maxlen;
     }
