@@ -26,6 +26,9 @@ Explanation: There is no celebrity.
 /* The knows API is defined for you.
       bool knows(int a, int b); */
 
+/* The knows API is defined for you.
+      bool knows(int a, int b); */
+
 class Solution {
 public:
     int findCelebrity(int n) {
@@ -33,13 +36,16 @@ public:
     
         int candidate = 0;
     
+        //possible candidate: if cadidates knows somebody candidate->i
+        //candidate can not be celebrity:  so replace candidate to i;
         for(int i=1; i<n; i++){
         
-            if ( knows(i,candidate) == false)
+            if ( knows(candidate, i))
             candidate = i;
            
         }
     
+        //check candidate is celebrity;
         for(int j=0; j<n; j++){
         
             if(j== candidate) continue;
