@@ -19,15 +19,15 @@ public:
         
         int i = nums.size() - 2;
         
-        //step 1: find first decreasing element: i
-        while (i >= 0 && nums[i + 1] <= nums[i]) {
+        //step 1: find first decreasing element
+        while (i >= 0 && nums[i] >= nums[i + 1]) {
             i--;
         }
         
-        //step 2: find "just" larger than i  called j
+        //step 2: find j "just" larger than i
         if (i >= 0) {
             int j = nums.size() - 1;
-            while (j >= 0 && nums[j] <= nums[i]) {
+            while (j >= 0 && nums[i] >= nums[j]) {
                 j--;
             }
             
