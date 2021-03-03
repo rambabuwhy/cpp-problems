@@ -32,12 +32,16 @@ Explanation: n = 1 since there is 1 number, so all numbers are in the range [0,1
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
+        
         int n=nums.size();
         
+        //add all natural numbers
         int sum_1 = n * (n+1) / 2;
         
+        //add all given nubers
         int sum_2 = accumulate(nums.begin(), nums.end(),0);
         
+        //diff is missing number
         return abs(sum_1 -  sum_2);
     }
 };
