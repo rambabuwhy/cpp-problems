@@ -14,10 +14,18 @@ Write a program to find the node at which the intersection of two singly linked 
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
 
-    //if any pointer reaches to end  then re assign/point it to other linked list's head node and vice versa
+    //if any pointer reaches to end  then re assign/point it to other linked list's head node
     
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         
