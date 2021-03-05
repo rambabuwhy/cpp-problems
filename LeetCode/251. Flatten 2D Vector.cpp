@@ -40,6 +40,7 @@ public:
     bool hasNext() {
         
         //if "in" is at last element move both to next vector' 0th elment to in and out++
+       //in == lv[out].size()  : also skip empty vectors
         while(out <lv.size() && in == lv[out].size()){
             in=0;
             out++;
