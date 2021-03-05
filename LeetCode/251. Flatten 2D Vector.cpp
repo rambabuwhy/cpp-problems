@@ -39,7 +39,7 @@ public:
     
     bool hasNext() {
         
-        //if you move from one vector to next.  in should be 0th element and out shut be next vector
+        //if "in" is at last element move both to next vector' 0th elment to in and out++
         while(out <lv.size() && in == lv[out].size()){
             in=0;
             out++;
