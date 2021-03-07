@@ -35,7 +35,7 @@ public:
             swap(nums, i, j);
         }
         
-        //step 4: reverse
+        //step 4: reverse from i to end
         reverse(nums.begin()+i+1, nums.end());
         
     }
