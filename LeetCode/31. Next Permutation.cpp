@@ -19,7 +19,7 @@ public:
         
         int i = nums.size() - 2;
         
-        //step 1: find first decreasing element
+        //step 1: find first decreasing element; skip if decreasing
         while (i >= 0 && nums[i] >= nums[i + 1]) {
             i--;
         }
