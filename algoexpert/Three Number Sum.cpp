@@ -9,9 +9,7 @@ void util(vector<int> &array, vector<vector<int>> &result, int targetSum, int in
 			int currSum = array[left] + array[right] + array[index];
 		
 			if( targetSum == currSum) {
-				vector<int> currSet({array[left], array[right], array[index] });
-				sort(currSet.begin(), currSet.end());
-				result.push_back(currSet);
+				result.push_back({array[index], array[left], array[right] });
 				left++;
 				right--;
 				
