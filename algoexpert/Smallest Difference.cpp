@@ -33,7 +33,7 @@ vector<int> smallestDifference(vector<int> arrayOne, vector<int> arrayTwo) {
 			return vector<int>({first,second});
 		}
 		
-		//find diff of all pairs and save it
+		//find diff of all pairs and save if it is minimum
 		if(diff > curr_diff){
 			diff = curr_diff;
 			result = {first,second};	
