@@ -1,3 +1,3 @@
 # Data Structures and Algorithms
 # Name: Rambabu Yerajana
-# Topic: Algorithms Puzzles
+# Topic: 500+ Optimized Solutions
