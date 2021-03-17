@@ -35,16 +35,18 @@ public:
         int V = prices[0];
         int P = prices[0];
         int itr = 0;
-        
-        //sum of all  vally + peak  
         while ( itr < prices.size()-1 ){
+            //find valley
             while( itr < prices.size()-1 && prices[itr] >= prices[itr+1])
                 itr++;
             V = prices[itr];
+            
+            //find peak
             while( itr < prices.size()-1 && prices[itr] <= prices[itr+1])
                 itr++;
             P = prices[itr];
             
+            //peak - valley
             M = M + (P - V);
         }
         return M;
