@@ -30,7 +30,7 @@ class Solution {
   public:
   int maxProfit(vector<int>& prices) {
       
-    
+      
     if (prices.size() <= 1) return 0;
 
     int leftMin = prices[0];
@@ -41,14 +41,18 @@ class Solution {
     vector<int> rightProfits(prices.size() + 1, 0);
 
     for (int l = 1; l < prices.size(); ++l) {
-      leftProfits[l] = max(leftProfits[l - 1], prices[l] - leftMin);
-      leftMin = min(leftMin, prices[l]);
+        
+        //left to right  profits  
+        leftProfits[l] = max(leftProfits[l - 1], prices[l] - leftMin);
+        leftMin = min(leftMin, prices[l]);
 
-      int r = prices.size() - 1 - l;
-      rightProfits[r] = max(rightProfits[r + 1], rightMax - prices[r]);
-      rightMax = max(rightMax, prices[r]);
+        //right to left profits  
+        int r = prices.size() - 1 - l;
+        rightProfits[r] = max(rightProfits[r + 1], rightMax - prices[r]);
+        rightMax = max(rightMax, prices[r]);
     }
 
+    //left +  right  
     int maxProfit = 0;
     for (int i = 0; i < prices.size(); ++i) {
       maxProfit = max(maxProfit, leftProfits[i] + rightProfits[i + 1]);
