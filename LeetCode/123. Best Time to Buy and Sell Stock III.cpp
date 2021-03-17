@@ -42,11 +42,11 @@ class Solution {
 
     for (int l = 1; l < prices.size(); ++l) {
         
-        //left to right  profits  
+        //left to right  profits  Algorithm: current price - MINimum so far
         leftProfits[l] = max(leftProfits[l - 1], prices[l] - leftMin);
         leftMin = min(leftMin, prices[l]);
 
-        //right to left profits  
+        //right to left profits  Algorithm: MAXimum so far - current price
         int r = prices.size() - 1 - l;
         rightProfits[r] = max(rightProfits[r + 1], rightMax - prices[r]);
         rightMax = max(rightMax, prices[r]);
