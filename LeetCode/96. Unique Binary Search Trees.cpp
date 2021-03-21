@@ -5,8 +5,7 @@ class Solution {
 public:
     
     //already  sorted
-    //bst at node i  is  
-    //left: (1 to i-1)  root: i  right (i+1 to n)
+    //cartesian product of the number of BST for its left and right subtrees,
     int numTrees(int n) {
         
         vector<int> dp(n+1);
