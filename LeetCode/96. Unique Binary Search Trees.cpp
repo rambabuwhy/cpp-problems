@@ -3,9 +3,15 @@ Given n, how many structurally unique BST's (binary search trees) that store val
 */
 class Solution {
 public:
+    
+    //already  sorted
+    //bst at node i  is  
+    //left: (1 to i-1)  root: i  right (i+1 to n)
     int numTrees(int n) {
-        int dp[n+1];
+        
+        vector<int> dp(n+1);
         dp[0] = dp[1] = 1;
+        
         for (int i = 2; i <= n; i++) {
             dp[i] = 0;
             for (int j = 1; j <= i; j++) {
