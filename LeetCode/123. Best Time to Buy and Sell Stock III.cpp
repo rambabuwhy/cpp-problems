@@ -42,17 +42,17 @@ class Solution {
 
     for (int l = 1; l < prices.size(); ++l) {
         
-        //left to right  profits  Algorithm: current price - MINimum so far
+        //left to right:  profits  Algorithm: current price - MINimum so far
         leftProfits[l] = max(leftProfits[l - 1], prices[l] - leftMin);
         leftMin = min(leftMin, prices[l]);
 
-        //right to left profits  Algorithm: MAXimum so far - current price
+        //right to left: profits  Algorithm: MAXimum so far - current price
         int r = prices.size() - 1 - l;
         rightProfits[r] = max(rightProfits[r + 1], rightMax - prices[r]);
         rightMax = max(rightMax, prices[r]);
     }
 
-    //left +  right  
+    //maximum of left +  right  
     int maxProfit = 0;
     for (int i = 0; i < prices.size(); ++i) {
       maxProfit = max(maxProfit, leftProfits[i] + rightProfits[i + 1]);
