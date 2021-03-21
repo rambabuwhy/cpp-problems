@@ -29,15 +29,13 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 class Solution {
   public:
   int maxProfit(vector<int>& prices) {
-      
-      
+        
     if (prices.size() <= 1) return 0;
 
     int leftMin = prices[0];
     int rightMax = prices[prices.size() - 1];
 
     vector<int> leftProfits(prices.size(), 0);
-  
     vector<int> rightProfits(prices.size() + 1, 0);
 
     for (int l = 1; l < prices.size(); ++l) {
