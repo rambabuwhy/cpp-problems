@@ -1,11 +1,9 @@
-/*
-Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
-*/
 class Solution {
 public:
     
     //already  sorted
     //cartesian product of the number of BST for its left and right subtrees,
+    //if j is in between 1 to i  then  at node j, lefrt nodes:  j-1  and right is  i-j
     int numTrees(int n) {
         
         vector<int> dp(n+1);
