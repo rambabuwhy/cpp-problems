@@ -15,41 +15,40 @@ public:
         if(path.empty()) return path;
         
         stack<string> S;
-        
         istringstream ss(path);
         
         string cs;
         
+        //step 1: get string by string with delimiter '\':  then  push valid string into stack
         while(getline(ss,cs,'/')){
             
+            //if it is '.' :then dont do any thing : get next string 
             if(!cs.empty() && cs == "."){
                 continue;
             }
             
+            //if it is ".." : then remove top from stach and get next string
             if(cs == ".."){
                 if(!S.empty()){
                     S.pop();
                 }
-                
                 continue;
             }
             
+            //if other than '.' & '..'   then push into stack
+            if(!cs.empty()){
+                S.push(cs);
+            }
            
-            if(!cs.empty())
-            S.push(cs);
-        
         }
         
-       
+        //step 2: create new string from stack
         string result;
         while(!S.empty()){
             result =  "/" + S.top() + result;
-            S.pop();
-            
-           
+            S.pop(); 
         }
         
-        return result.empty()?"/":result;
-        
+        return result.empty()? "/" :result; 
     }
 };
