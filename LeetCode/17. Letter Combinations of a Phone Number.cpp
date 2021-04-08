@@ -27,29 +27,32 @@ class Solution {
     vector<string> P = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     
 public:
+    
     vector<string> letterCombinations(string digits) {
         
         if(digits.size() < 1) return vector<string>();
         
         vector<string> result;
-        backtrack(result, digits, "", 0);
-        return result;
+        backtrack(digits, result, "", 0);
         
+        return result;        
     }
     
-    void backtrack(vector<string> &result, string digits, string currString,int index){
+    //use index to iterate input "digits"
+    //if index == digit size  return output  then backtrack
+    //take word of index, then iterate the word
+    void backtrack(string digits, vector<string> &result, string currString,int index){
         
-        if(index == digits.size()){
+        if(index == digits.size()) {
             result.push_back(currString);
             return;
         }
         
         string curr = P[digits[index]-'0'];
-        for(int i = 0; i< curr.size();i++){
+        for(int i = 0; i< curr.size();i++) {
             currString.push_back(curr[i]);
-            backtrack(result, digits, currString,index+1);
+            backtrack(digits, result, currString,index+1);
             currString.pop_back();
-        }
-              
+        }              
     }
 };
