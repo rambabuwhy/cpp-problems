@@ -37,7 +37,8 @@ public:
         if(haystack.size() < needle.size()) return -1;
         if(!needle.size()) return 0;
         
-        int NS = needle.size(), HS = haystack.size();
+        int NS = needle.size();
+        int HS = haystack.size();
         
         //p: base  m: modulo
         const int p = 31; 
