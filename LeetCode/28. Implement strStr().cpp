@@ -37,32 +37,38 @@ public:
         if(haystack.size() < needle.size()) return -1;
         if(!needle.size()) return 0;
         
-        int NS = needle.size();
-        int HS = haystack.size();
+        int needle_size = needle.size();
+        int haystack_size = haystack.size();
         
         //p: base  m: modulo
-        const int p = 31; 
-        const int m = 1e9 + 9;
+        const int prime = 31; 
+        const int mod = 1e9 + 9;
         
-        vector<long> p_pow(HS); //pre calculate powers into a vector
-        p_pow[0] = 1;  //p_pow ^ 0 = 1
-        for (int i = 1; i < (int)p_pow.size(); i++) 
-            p_pow[i] = (p_pow[i-1] * p) % m;
+        //pre calculate powers into a vector
+        vector<long> prime_pow(haystack_size); 
+        prime_pow[0] = 1;  //p_pow ^ 0 = 1
+        for (int i = 0; i < (int)prime_pow.size()-1; i++) 
+            prime_pow[i+1] = (prime_pow[i] * prime) % mod;
 
-        vector<long> h(HS + 1, 0); 
-        for (int i = 0; i < HS; i++)
-            h[i+1] = (h[i] + (haystack[i] - 'a' + 1) * p_pow[i]) % m; 
+        ////pre calculate hash of haystack into a vector
+        vector<long> haystack_hash(haystack_size + 1, 0); 
+        for (int i = 0; i < haystack_size; i++)
+            haystack_hash[i+1] = (haystack_hash[i] + (haystack[i] - 'a' + 1) * prime_pow[i]) % mod; 
         
-        long h_s = 0; 
-        for (int i = 0; i < NS; i++) 
-            h_s = (h_s + (needle[i] - 'a' + 1) * p_pow[i]) % m; 
+        //hash of needle
+        long needle_hash = 0; 
+        for (int i = 0; i < needle_size; i++) 
+            needle_hash = (needle_hash + (needle[i] - 'a' + 1) * prime_pow[i]) % mod; 
 
-        for (int i = 0; i + NS - 1 < HS; i++) { 
-            long cur_h = (h[i+NS] + m - h[i]) % m; 
-            if (cur_h == h_s * p_pow[i] % m)
-                return i;
+        //rolling hash ;  compare hash
+        vector<int> occurences;
+        for (int i = 0; i + needle_size - 1 < haystack_size; i++) { 
+            long cur_hash = (haystack_hash[i + needle_size] + mod - haystack_hash[i]) % mod; 
+            if (cur_hash == needle_hash * prime_pow[i] % mod)
+                occurences.push_back(i);
         }
-        return -1;
+        return occurences.size() < 1 ? -1 : occurences[0];
     }
   
 };
+
