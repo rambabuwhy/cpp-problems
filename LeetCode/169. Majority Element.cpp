@@ -32,3 +32,24 @@ public:
         return -1;
     }
 };
+
+
+class Solution {
+public:
+    //Boyer-Moore Voting Algorithm
+    int majorityElement(vector<int>& nums) {
+        int count = 0;
+        int candidate = -1;
+
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            
+            //if same number  then +1 else -1
+            count += (num == candidate) ? 1 : -1;
+        }
+
+        return candidate;
+    }
+};
