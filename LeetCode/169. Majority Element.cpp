@@ -20,12 +20,12 @@ class Solution {
 public:
     //use map: element -> frequesnce
     int majorityElement(vector<int>& nums) {
-        unordered_map<int,int> M;
+        unordered_map<int,int> umap;
         for(auto i:nums){
-            M[i]++;            
+            umap[i]++;            
         }
-        for(auto itr:M){
-            if(i.second > nums.size()/2){
+        for(auto itr:umap){
+            if(itr.second > nums.size()/2){
                 return itr.first;
             }
         }
