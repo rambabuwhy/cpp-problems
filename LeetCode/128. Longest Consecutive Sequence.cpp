@@ -19,9 +19,11 @@ Output: 9
 
 
 
-
 class Solution {
 public:
+    
+    //store all numser into set
+    //iterate nums and search num+1 in set
     int longestConsecutive(vector<int>& nums) {
         
         unordered_set<int> uset(nums.begin(), nums.end());
