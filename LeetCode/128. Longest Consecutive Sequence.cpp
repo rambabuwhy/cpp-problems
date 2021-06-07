@@ -22,14 +22,13 @@ Output: 9
 class Solution {
 public:
     
-    //store all numser into set
+    //store all numbers into set
     //iterate nums and search num+1 in set
     int longestConsecutive(vector<int>& nums) {
         
         unordered_set<int> uset(nums.begin(), nums.end());
         
         int result = 0;
-       
         for(auto num:nums){
             if(uset.find(num-1) == uset.end()){
                 int curr_num = num;
@@ -41,7 +40,6 @@ public:
                 result = max(result,curr_result);
             }
         }
-        
         return result;
     }
 };
