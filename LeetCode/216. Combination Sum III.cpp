@@ -46,12 +46,13 @@ Explanation:
 
 
 class Solution {
+class Solution {
 public:
     vector<vector<int>> combinationSum3(int k, int n) {
         
         vector<vector<int>> result;
         vector<int> curr;
-        backTrack(k,n,0,result,curr);
+        backTrack(k,n, 1,result,curr);
         return result;
         
     }
@@ -66,9 +67,9 @@ public:
             
         }
         
-        for(int i=index; i<9; i++){
-            curr.push_back(i+1);
-            backTrack(k, target-i-1, i+1, result, curr);
+        for(int i=index; i<=9; i++){
+            curr.push_back(i);
+            backTrack(k, target-i, i+1, result, curr);
             curr.pop_back();
         } 
         
