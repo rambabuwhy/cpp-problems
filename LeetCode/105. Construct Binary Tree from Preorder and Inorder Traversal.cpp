@@ -1,3 +1,19 @@
+/*Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
+
+ 
+
+Example 1:
+
+
+Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+Output: [3,9,20,null,null,15,7]
+Example 2:
+
+Input: preorder = [-1], inorder = [-1]
+Output: [-1]
+
+*/
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -24,8 +40,8 @@
 class Solution {
 public:
     
-    //1. construct node from preorder[pre-index++]
-    //2. find div_index  from inorder  (MAP)
+    //1. construct nodes from preorder[pre-index++]
+    //2. find div_index  from inorder  (via map)
     //3. construct node->left  from inorder to divindex : util(inorder_start, div_index)
     //4. construct node->right from divindex to inorder : util(div_index+1, inorder_end)
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
@@ -35,7 +51,7 @@ public:
         
         //value->index  of inorder
         for(int i = 0; i<inorder.size(); i++){
-            M[inorder[i]] = i;
+            umap[inorder[i]] = i;
         }
         
         pre_index = 0;        
@@ -51,7 +67,7 @@ public:
         return nullptr;
         
         int root_val = preorder[pre_index++];
-        int divide_index = M[root_val];
+        int divide_index = umap[root_val];
         
         TreeNode* root = new TreeNode(root_val);
         root->left = util(preorder, inorder, in_start, divide_index);
@@ -61,6 +77,6 @@ public:
     }
     
 private:
-    map<int,int> M;
+    unordered_map<int,int> umap;
     int pre_index;
 };
