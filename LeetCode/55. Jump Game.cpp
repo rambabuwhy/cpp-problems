@@ -25,8 +25,8 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum jump 
 
 class Solution {
 public:
-    //  Case:  Can we reach last index ?
-    // if i+nums[i] can reach lastPos then move lastPos from N to 0 and
+    // if i+nums[i] can reach lastPos then move lastPos from N to i and
+    //finally check lastpos is at 0th position or not
     bool canJump(vector<int>& nums) {  
         int lastPos = nums.size()-1;
         for(int i=nums.size()-1; i>=0; i--){
