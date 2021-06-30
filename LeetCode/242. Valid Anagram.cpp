@@ -26,14 +26,14 @@ public:
         unordered_map<char, int> umap;
         
         //step 1: use all chars frequency of string 's' in map
-        for(char c:s) {
+        for(char c : s) {
             umap[c]++;
         }
         
         //verify frequency with string 't'
-        for(char c:t){
+        for(char c : t){
             umap[c]--; 
-            if(umap[c]<0) return false;
+            if(umap[c] < 0) return false;
         }
         
         return true; 
