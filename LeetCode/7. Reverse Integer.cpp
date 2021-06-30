@@ -22,14 +22,18 @@ public:
         int result=0;
        
         while(x){
+            
+            //step 1: find last digit
             int digit = x%10;
-            x = x/10;
-            //overflow
+            
+            //check overflow
             if (result > INT_MAX/10 || (result == INT_MAX / 10 && digit > 7)) return 0;
             if (result < INT_MIN/10 || (result == INT_MIN / 10 && digit < -8)) return 0;
             
-            //add in reverse way
+            //step 2: add that digit in reverse way
             result = result  * 10 +  digit;
+            
+            x = x/10;
         }
         
         return result;   
