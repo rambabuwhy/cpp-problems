@@ -13,10 +13,10 @@ public:
         
         int non_zero = 0;
         
-        //move all non-zero to front
+        //iterate whole array and move all non-zero to front
         for(int i = 0 ; i < nums.size();i++){
             if(nums[i] != 0 ){
-                nums[non_zero++]=nums[i];
+                nums[non_zero++] = nums[i];
             }
         }
         
