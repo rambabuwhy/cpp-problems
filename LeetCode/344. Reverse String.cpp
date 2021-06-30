@@ -13,11 +13,17 @@ public:
         if(s.empty()) return;
         if(s.size() == 1) return;
         
-        for(int i=0; i<s.size()/2; i++){
-            char temp = s[i];
-            s[i] = s[s.size()-1-i];
-            s[s.size()-1-i]=temp;
-        }
+        reverse(s, 0, s.size()-1);
+    }
+    
+    void reverse(vector<char> &s, int left, int right){
         
+        while (left < right){
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+            left++;
+            right--;
+        }
     }
 };
