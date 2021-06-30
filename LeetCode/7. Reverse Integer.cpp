@@ -33,6 +33,7 @@ public:
             //step 2: add that digit in reverse way
             result = result  * 10 +  digit;
             
+            //move x for next digit
             x = x/10;
         }
         
