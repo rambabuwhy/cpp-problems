@@ -28,27 +28,32 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 class Solution {
 public:
+    
+    //find valley and peak;  calculate peak - valley
     int maxProfit(vector<int>& prices) {
         if (prices.size() < 2) return 0;
         
-        int M = 0;
-        int V = prices[0];
-        int P = prices[0];
+        int MaxProfit = 0;
+        int valley = prices[0];
+        int peak = prices[0];
         int itr = 0;
         while ( itr < prices.size()-1 ){
+            
             //find valley
-            while( itr < prices.size()-1 && prices[itr] >= prices[itr+1])
+            while( itr < prices.size()-1 && prices[itr] >= prices[itr+1]){
                 itr++;
-            V = prices[itr];
+            }      
+            valley = prices[itr];
             
             //find peak
-            while( itr < prices.size()-1 && prices[itr] <= prices[itr+1])
+            while( itr < prices.size()-1 && prices[itr] <= prices[itr+1]){
                 itr++;
-            P = prices[itr];
+            }     
+            peak = prices[itr];
             
             //peak - valley
-            M = M + (P - V);
+            MaxProfit  = MaxProfit + (peak - valley);
         }
-        return M;
+        return MaxProfit;
     }
 };
