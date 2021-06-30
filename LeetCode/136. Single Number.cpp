@@ -26,13 +26,12 @@ public:
         
         if(nums.size() < 1) return 0;
        
+        //xor of all numers
         int result = nums[0];
-        
         for(int i = 1; i < nums.size(); i++){
             result = result ^ nums[i];
         }
         
-        return result;
-        
+        return result;  
     }
 };
