@@ -13,6 +13,7 @@ If no valid conversion could be performed, a zero value is returned.
 */
 
 
+
 class Solution {
 public:
     int myAtoi(string str) {
@@ -27,34 +28,36 @@ public:
         
         //store sign
         if(str[index]=='-'){
-            neg=true;
+            neg = true;
             index++;
         }
         else if(str[index]=='+'){
-            neg=false;
+            neg = false;
             index++;
         }
         else if(!isdigit(str[index])){
             return 0;
         }
         
-        //logic
+        //logic: get digit and add it to result
         while(isdigit(str[index])){
              
-            int digit = str[index++]-'0';
+            int digit = str[index++] - '0';
           
-            if (result > INT_MAX/10 || (result == INT_MAX / 10 && digit > 7)){
-                    if (neg) return INT_MIN;
-                    else return INT_MAX;
+            if (result > INT_MAX/10 || (result == INT_MAX / 10 && digit > 7)) {
+                    if (neg) {
+                        return INT_MIN;
+                    }
+                    else {
+                        return INT_MAX;
+                    }
             }
             result = result * 10 + digit;
         }
         
         if(neg) {
-            result=-result;
+            result = -result;
         }
         return result;
-    }
-        
-        
+    }    
 };
