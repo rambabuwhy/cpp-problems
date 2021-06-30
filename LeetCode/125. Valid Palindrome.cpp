@@ -19,19 +19,25 @@ class Solution {
 public:
     bool isPalindrome(string s) {
         
+        //sanity
         if(s.size() < 2) return true;
-        int l =0;
-        int r=s.size()-1;
-        while(l<=r){
+        
+        //two pointers left and right
+        int left = 0;
+        int right = s.size()-1;
+        while(left <= right){
             
-            if(!isalnum(s[l])) { l++; continue;}
-            if(!isalnum(s[r])) { r--;continue;}
-           
-            if(tolower(s[l]) != tolower(s[r])) return false;
-            l++,r--;
+            //step 1: skip if it is not alpa numeric
+            if(!isalnum(s[left]))  { left++;   continue;}
+            if(!isalnum(s[right])) { right--;  continue;}
+             
+            // step 2: return false if it is not match
+            if(tolower(s[left]) != tolower(s[right])) return false;
+        
+            left++;
+            right--;
         }
         
         return true;
-        
     }
 };
