@@ -15,6 +15,9 @@ Output: false
 
 class Solution {
 public:
+    
+    //sorting takes O(nlogn) 
+    //we can do O(n)  with map
     bool isAnagram(string s, string t) {
         
         if(s.size() != t.size()) return false;
