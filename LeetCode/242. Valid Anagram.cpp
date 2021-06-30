@@ -22,6 +22,7 @@ public:
         
         if(s.size() != t.size()) return false;
         
+        //map  char -> frequency
         unordered_map<char, int> umap;
         
         //step 1: use all chars frequency of string 's' in map
