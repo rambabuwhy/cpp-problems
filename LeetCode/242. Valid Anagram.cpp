@@ -17,24 +17,21 @@ class Solution {
 public:
     bool isAnagram(string s, string t) {
         
-        if(s.size() != t.size())
-        return false;
+        if(s.size() != t.size()) return false;
         
         unordered_map<char, int> umap;
         
-        for(char c:s){
+        //step 1: use all chars frequency of string 's' in map
+        for(char c:s) {
             umap[c]++;
         }
         
+        //verify frequency with string 't'
         for(char c:t){
-            
-            umap[c]--;
-            
-            if(umap[c]<0)
-            return false;
+            umap[c]--; 
+            if(umap[c]<0) return false;
         }
         
-        return true;
-        
+        return true; 
     }
 };
