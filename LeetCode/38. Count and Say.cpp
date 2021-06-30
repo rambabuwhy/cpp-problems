@@ -33,22 +33,22 @@ class Solution {
 public:
     string countAndSay(int n) {
         
-       
         if( n == 0 ) return "";
         if( n == 1 ) return "1";
-        if( n == 2 ) return "11";
        
-        string result="11";
-        for(int i=2 ; i<n; i++){ 
+        //to find nth one. we need to find 0 to n-1; loop is for it
+        string result = "11";
+        for(int i=2; i<n; i++) { 
             
             int len = result.length();
             string curr;
             
+            //to find next one. iterate current one
             for(int j=0; j<len; j++){
                 int count=1;
                 
                 //if same digit then count
-                while(j+1<len && result[j] == result[j+1] )
+                while(j+1 < len && result[j] == result[j+1] )
                 {
                     count++;
                     j++;
@@ -59,6 +59,6 @@ public:
             }
             result = curr; 
         }
-         return result;
+        return result;
     }
 };
