@@ -23,6 +23,7 @@ public:
         if(nums1.size() == 0 || nums2.size() ==0)
         return vector<int>();
                 
+        //make nums2 is big always
         if(nums2.size() < nums1.size()){ 
             intersect(nums2, nums1);
         }
@@ -30,18 +31,18 @@ public:
         vector<int> result;
         unordered_map <int, int> umap;
         
+        //frequency count for nums2
         for(auto num:nums2){
             umap[num]++;
         }
         
+        //iterate nums1 and find in nums2 map
         for(auto num:nums1){
             
             if(umap[num]-- > 0){
                 result.push_back(num);
-            }
-            
+            } 
         }
         return result;
-        
     }
 };
