@@ -24,6 +24,7 @@ public:
         
         unordered_set<int> uset;
         
+        //use map count and verify its appearance
         for(auto num:nums){
             
             if(uset.find(num) != uset.end()){
@@ -31,8 +32,6 @@ public:
             }
             uset.insert(num);
         }
-        
-        return false;
-        
+        return false;  
     }
 };
