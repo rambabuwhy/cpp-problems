@@ -23,7 +23,9 @@ Explanation:
 rotate 1 steps to the right: [99,-1,-100,3]
 rotate 2 steps to the right: [3,99,-1,-100]
 
-*/class Solution {
+*/
+
+class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
         
@@ -31,7 +33,7 @@ public:
         //reversing first k numbers 
         //revering last n-k numbers 
         
-        k %= nums.size();
+        k = k % nums.size();
         reverse(nums, 0, nums.size() - 1);
         reverse(nums, 0, k - 1);
         reverse(nums, k, nums.size() - 1);
