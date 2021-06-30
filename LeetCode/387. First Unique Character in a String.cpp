@@ -24,7 +24,7 @@ public:
         
         unordered_map<char,int> M;
         
-        //step 1: find frequesncy of each element
+        //step 1: find frequency of each element
         for(auto c: s){
             M[c]++;
         }
