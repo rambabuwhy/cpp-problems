@@ -22,8 +22,8 @@ public:
         return vector<vector<int>>();
         
         vector<vector<int>>  result;
-        
         queue<TreeNode*> Q;
+        
         Q.push(root);
         
         while(!Q.empty()){
@@ -41,16 +41,10 @@ public:
                 Q.push(curr->left);
                 
                 if(curr->right)
-                Q.push(curr->right);
-                
-            }
-            
-            result.push_back(curr_level);
-            
-            
-        }
-        
-        return result;
-        
+                Q.push(curr->right);     
+            } 
+            result.push_back(curr_level);        
+        }  
+        return result;   
     }
 };
