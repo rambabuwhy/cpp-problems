@@ -54,6 +54,7 @@ public:
         int total = 0;
         for(int i = 0; i < s.length(); i++){
             
+            //check the symbol after (i + 1) to determine current symbol should be "added" or "subtracted".
             if(lmap[s[i+1]] <= lmap[s[i]])  
             total += lmap[s[i]]; 
             
