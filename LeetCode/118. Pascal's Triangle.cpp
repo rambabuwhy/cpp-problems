@@ -21,6 +21,7 @@ public:
         
         vector<vector<int>> dp(numRows);
 
+        //fill  each row
         for (int i = 0; i < numRows; i++) {
             
             dp[i] = vector<int>(i + 1);
