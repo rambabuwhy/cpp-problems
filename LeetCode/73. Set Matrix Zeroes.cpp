@@ -27,6 +27,7 @@ public:
         unordered_set<int> rows;
         unordered_set<int> cols;
         
+        //store  all  zeros in rows and  cols
         for(int i=0; i<matrix.size(); i++){
             for(int j =0; j<matrix[0].size(); j++){
                 if(matrix[i][j] == 0){
@@ -36,6 +37,7 @@ public:
             }
         }
         
+        //apply
         for(int i =0; i< matrix.size(); i++){
             for(int j=0; j<matrix[0].size(); j++){
                 
@@ -43,10 +45,7 @@ public:
                     matrix[i][j] = 0;
                     
                 }
-                
             }
         }
-        
-        
     }
 };
