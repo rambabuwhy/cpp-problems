@@ -28,9 +28,9 @@ public:
     }
     
     //divide and conquer
-    string longestCommonPrefixUtil(vector<string>& strs,int l, int r) {
+    string longestCommonPrefixUtil(vector<string>& strs, int l, int r) {
         
-        if(l == r){
+        if(l == r) {
             return strs[l];
         } else {
             int mid = (l + r) / 2;
