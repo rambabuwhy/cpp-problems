@@ -23,18 +23,19 @@ class Solution {
 public:
     //sliding window
     int lengthOfLongestSubstring(string s) {
+        
         int maxlen = 0;
         int wstart = 0;
+        
         //char to last index position.
         unordered_map<char,int> ccMap;
-        
         for(int wend = 0; wend < s.length(); wend++){
             
             if(ccMap.find(s[wend]) != ccMap.end()){
-                wstart = max(wstart,ccMap[s[wend]]+1);    
+                wstart = max(wstart, ccMap[s[wend]]+1);    
             }
             
-            ccMap[s[wend]]=wend; 
+            ccMap[s[wend]] = wend; 
             maxlen = max(maxlen, wend-wstart+1);
         }
         return maxlen;
