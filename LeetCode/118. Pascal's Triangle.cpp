@@ -22,15 +22,14 @@ public:
         vector<vector<int>> dp(numRows);
 
         for (int i = 0; i < numRows; i++) {
+            
             dp[i] = vector<int>(i + 1);
             dp[i][0] = dp[i][i] = 1;
   
-            for (int j = 1; j < i; j++)
+            for (int j = 1; j < i; j++){
                 dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
+            }  
         }
-        
-        return dp;
-    
-        
+        return dp;        
     }
 };
