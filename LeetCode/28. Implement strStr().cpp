@@ -47,6 +47,7 @@ public:
         //pre calculate powers into a vector
         vector<long> prime_pow(haystack_size); 
         prime_pow[0] = 1;  //p_pow ^ 0 = 1
+        
         for (int i = 0; i < (int)prime_pow.size()-1; i++){
             prime_pow[i+1] = (prime_pow[i] * prime) % mod;
         } 
@@ -64,6 +65,8 @@ public:
         } 
             
         //rolling hash ;  compare hash
+        //add mod to eliminate negitive hash; adding mod does not change the result
+        // ex: 2 % 5 = 2 same as  2+5 % 5 = 7 % 5 = 2
         vector<int> occurences;
         for (int i = 0; i + needle_size - 1 < haystack_size; i++) { 
             long cur_hash = (haystack_hash[i + needle_size] + mod - haystack_hash[i]) % mod; 
@@ -74,5 +77,3 @@ public:
         return occurences.size() < 1 ? -1 : occurences[0];
     }
 };
-
-
