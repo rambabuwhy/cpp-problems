@@ -47,28 +47,32 @@ public:
         //pre calculate powers into a vector
         vector<long> prime_pow(haystack_size); 
         prime_pow[0] = 1;  //p_pow ^ 0 = 1
-        for (int i = 0; i < (int)prime_pow.size()-1; i++) 
+        for (int i = 0; i < (int)prime_pow.size()-1; i++){
             prime_pow[i+1] = (prime_pow[i] * prime) % mod;
-
+        } 
+        
         ////pre calculate hash of haystack into a vector
         vector<long> haystack_hash(haystack_size + 1, 0); 
-        for (int i = 0; i < haystack_size; i++)
-            haystack_hash[i+1] = (haystack_hash[i] + (haystack[i] - 'a' + 1) * prime_pow[i]) % mod; 
-        
+        for (int i = 0; i < haystack_size; i++){
+            haystack_hash[i+1] = (haystack_hash[i] + (haystack[i] - 'a' + 1) * prime_pow[i]) % mod;
+        }
+             
         //hash of needle
         long needle_hash = 0; 
-        for (int i = 0; i < needle_size; i++) 
-            needle_hash = (needle_hash + (needle[i] - 'a' + 1) * prime_pow[i]) % mod; 
-
+        for (int i = 0; i < needle_size; i++){
+            needle_hash = (needle_hash + (needle[i] - 'a' + 1) * prime_pow[i]) % mod;
+        } 
+            
         //rolling hash ;  compare hash
         vector<int> occurences;
         for (int i = 0; i + needle_size - 1 < haystack_size; i++) { 
             long cur_hash = (haystack_hash[i + needle_size] + mod - haystack_hash[i]) % mod; 
-            if (cur_hash == needle_hash * prime_pow[i] % mod)
+            if (cur_hash == needle_hash * prime_pow[i] % mod){
                 occurences.push_back(i);
+            }   
         }
         return occurences.size() < 1 ? -1 : occurences[0];
     }
-  
 };
+
 
