@@ -25,7 +25,12 @@ Both the left and right subtrees must also be binary search trees.
  */
 class Solution {
 public:
-    bool util(TreeNode* root, long low,long high) {
+   
+    bool isValidBST(TreeNode* root) {
+        return util(root, LONG_MIN, LONG_MAX);
+    }
+    
+    bool util(TreeNode* root, long low, long high) {
         
         if(root == nullptr)  
         return true;
@@ -33,13 +38,6 @@ public:
         if(root->val <= low || root->val >= high)
         return false;
         
-        return util(root->left,low, root->val) && util(root->right,root->val,high);
-        
-    }
-    
-    bool isValidBST(TreeNode* root) {
-        
-        return util(root,LONG_MIN,LONG_MAX);
-        
-    }
+        return util(root->left, low, root->val) && util(root->right, root->val, high);
+    } 
 };
