@@ -27,7 +27,6 @@ Return:
 ]
 
 */
-
 class Solution {
 public:
     vector<string> fizzBuzz(int n) {
@@ -47,8 +46,6 @@ public:
             else
             result.push_back(to_string(i));
         }
-        
         return  result;
-        
     }
 };
