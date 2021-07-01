@@ -24,28 +24,25 @@ class Solution {
 public:
     int rob(vector<int>& nums) {
         
-        if(nums.size() == 0){
-            return 0;
-        }
+        //sanity
+        if(nums.size() == 0) return 0;
+        if(nums.size() == 1) return nums[0];
         
-        if(nums.size() == 1){
-            return nums[0];
-        }
-        
+        //create dp table
         vector<int> dp(nums.size() + 1);
         
+        //base
         dp[0] = nums[0];
         dp[1] = max(nums[0], nums[1]);
         
+        //max of with or without robbing a house
         for (int i=2; i<nums.size(); i++){
             
             int with_rob = nums[i] + dp[i-2]; 
             int without_rob = dp[i-1];
             
             dp[i] = max(with_rob, without_rob);
-        }
-            
+        }      
         return dp[nums.size()-1];
-        
     }
 };
