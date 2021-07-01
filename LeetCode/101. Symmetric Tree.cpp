@@ -36,9 +36,14 @@ public:
     
     bool util(TreeNode* r1, TreeNode* r2){
        
+        //if both null true; if not return false
         if(r1 == nullptr && r2 == nullptr) return true;
         if(r1 == nullptr || r2 == nullptr) return false;
+        
+        //if not match return false
         if(r1->val != r2->val) return false;
+        
+        //recursive both left and right
         return util(r1->left, r2->right) && util(r1->right, r2->left);
     }
 };
