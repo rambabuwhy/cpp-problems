@@ -19,14 +19,14 @@ Output: [1]
 
 class Solution {
 public:
+    
+    //iterate from back to front
+    //insert it into array which has max size (form back side)
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         
         int total_size = nums1.size()-1;
-        
-        
         int i = m-1;
         int j = n-1;
-       
         
         while(i >=0 && j >= 0) {
  
@@ -36,14 +36,11 @@ public:
             else
             nums1[total_size] = nums1[i--];
    
-            total_size--;
-            
+            total_size--;     
         }
         
         while(j>=0){
-            nums1[total_size--]=nums2[j--];
-            
-        }
-        
+            nums1[total_size--]=nums2[j--];      
+        }  
     }
 };
