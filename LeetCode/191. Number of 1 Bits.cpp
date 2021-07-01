@@ -36,9 +36,7 @@ public:
             
             count++, 
             n = n & (n-1); //flip LSB
-            
         }
-        
         return count;
     }
 };
