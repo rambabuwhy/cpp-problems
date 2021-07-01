@@ -26,21 +26,18 @@ public:
         if(prices.size() < 2) return 0;
         
         //Algorithms: current prie - min price so far.
-        
         int min_price = INT_MAX;
         int max_profit = 0;
-        for(int i = 0 ; i < prices.size();i++){
+        for(int i = 0 ; i < prices.size(); i++){
             
             //minimum price so far
             //minimum of all
-            min_price = min ( min_price, prices[i]);
+            min_price = min(min_price, prices[i]);
             
             //current price - minimum so far
             //maximum of all
-            max_profit = max ( max_profit, prices[i] - min_price);
+            max_profit = max (max_profit, prices[i] - min_price);
         }
-        
         return max_profit;
-        
     }
 };
