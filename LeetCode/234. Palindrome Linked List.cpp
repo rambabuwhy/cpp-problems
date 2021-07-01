@@ -48,22 +48,30 @@ public:
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
+    
     ListNode *front=nullptr;
+    
     bool isPalindrome(ListNode* head) {
-         front=head;
-        return rev(head);        
+        front = head;
+        return reverse(head);        
     }
     
-    bool rev(ListNode *last){
+    bool reverse(ListNode *last){
         
-        if(last == nullptr)return true; 
+        if(last == nullptr) return true; 
            
-        if(rev(last->next) !=  true)  return false;
-        if(front->val != last->val)  return false;
+        if(reverse(last->next) == false) {
+            return false;
+        }
+        
+        if(front->val != last->val) {
+            return false;
+        }
+        
         front = front->next;
-      
         return true;
     }
 };
