@@ -32,7 +32,6 @@ public:
         while( !Q.empty() ) {
             
             int qsize =  Q.size();
-            
             for(int i = 0; i< qsize; i++) {
               
                 TreeNode* curr = Q.front();
@@ -40,12 +39,9 @@ public:
                 
                 if(curr->left)  Q.push(curr->left);
                 if(curr->right) Q.push(curr->right);
-             
             }
-            
-            depth++;
-        }
-        
+            depth++;     
+        } 
         return depth;
     }
 };
