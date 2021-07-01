@@ -41,13 +41,14 @@ public:
     
     /** Returns a random shuffling of the array. */
     vector<int> shuffle() {
+        
+        //iterate array; swap random index with ith index( 0 to max)
         vector<int> result(nums);
-        for (int i = 0;i < result.size();i++) {
-            int pos = rand()%(result.size()-i);
-            swap(result[i+pos], result[i]);
+        for (int i = 0; i < result.size(); i++) {
+            int pos = rand() % (result.size()-i);
+            swap(result[i], result[i+pos]);
         }
         return result;
-        
     }
 };
 
