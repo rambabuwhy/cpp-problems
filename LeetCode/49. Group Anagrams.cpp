@@ -24,26 +24,21 @@ class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         
-        map<string, vector<string>> mmap = {};
+        unordered_map<string, vector<string>> mmap = {};
         vector<vector<string>> result = {};
         
-        if(strs.size() < 1) {
-            return result;
-        }
+        if(strs.size() < 1) return result;
         
         for(auto str:strs){
             
             string original = str;
             sort(str.begin(),str.end());
             mmap[str].push_back(original);
-                   
         }
         
         for(auto m:mmap){
             result.push_back(m.second);  
         }
-        
         return result;
     }
-  
 };
