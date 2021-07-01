@@ -36,7 +36,7 @@ public:
             
             //current price - minimum so far
             //maximum of all
-            max_profit = max (max_profit, prices[i] - min_price);
+            max_profit = max(max_profit, prices[i] - min_price);
         }
         return max_profit;
     }
