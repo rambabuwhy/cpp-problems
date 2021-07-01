@@ -27,10 +27,11 @@ public:
         int maxlen = 0;
         int wstart = 0;
         
-        //char to last index position.
+        //map: <char, last index>.
         unordered_map<char,int> ccMap;
         for(int wend = 0; wend < s.length(); wend++){
             
+            //move char of wstart to last position's index
             if(ccMap.find(s[wend]) != ccMap.end()){
                 wstart = max(wstart, ccMap[s[wend]]+1);    
             }
