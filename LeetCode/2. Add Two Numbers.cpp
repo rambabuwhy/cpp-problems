@@ -19,67 +19,43 @@ Explanation: 342 + 465 = 807.
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
+    
+    //use dummy pointer
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* head = nullptr;
-        ListNode* tail = nullptr;
+        
+        ListNode* dummy = new ListNode(0);
+        ListNode* curr = dummy;
+        
         int carry = 0;
-        while(l1 && l2){
-            int sum = carry + l1->val + l2->val;
+        while(l1 || l2){
+            
+            //if list is null add 0 other wise list value
+            int v1 = l1 ? l1->val : 0;
+            int v2 = l2 ? l2->val : 0;
+            
+            int sum = carry + v1 + v2;
             carry = sum / 10;
-            sum = sum % 10;
-
-            ListNode* newNode = new ListNode(sum);
-            if(!tail){
-                head = tail = newNode;
-            }
-            else{
-                tail->next = newNode;
-                tail = newNode;
-            }
-            l1 = l1->next;
-            l2 = l2->next;
+            
+            curr->next  = new ListNode(sum % 10);
+            curr = curr->next;
+            
+            //move forward
+            l1 ? l1 = l1->next : l1 = nullptr;
+            l2 ? l2 = l2->next : l2 = nullptr;
         }
-        while(l1){
-            int sum = carry + l1->val;
-            carry = sum / 10;
-            sum = sum % 10;
-            ListNode* newNode = new ListNode(sum);
-            if(!tail){
-                head = tail = newNode;
-            }
-            else{
-                tail->next = newNode;
-                tail = newNode;
-            }
-            l1=l1->next;
-        }
-        while(l2){
-            int sum = carry + l2->val;
-            carry = sum / 10;
-            sum = sum % 10;
-            ListNode* newNode = new ListNode(sum);
-            if(!tail){
-                head = tail = newNode;
-            }
-            else{
-                tail->next = newNode;
-                tail = newNode;
-            }
-
-            l2=l2->next;
-        }
-        if(carry){
-            ListNode* newNode = new ListNode(carry);
-            if(!tail){
-                head = tail = newNode;
-            }
-            else{
-                tail->next = newNode;
-                tail = newNode;
-            }
-        }
-        return head;
-     }
+    
+        carry > 0 ? curr->next = new ListNode(carry) : nullptr;
+        
+        return dummy->next;
+    }
 };
