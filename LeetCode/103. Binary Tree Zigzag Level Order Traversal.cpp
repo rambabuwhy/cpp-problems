@@ -26,7 +26,7 @@ public:
         queue<TreeNode*> Q;
         Q.push(root);
        
-        bool LR = true;
+        bool left_to_right_flag = true;
         while( Q.empty() == false ) {
             
             int cSize = Q.size();
@@ -39,22 +39,15 @@ public:
                
                 cList.push_back(curr->val);
                 
-               
                 if(curr->left) Q.push(curr->left);
                 if(curr->right) Q.push(curr->right);
-                    
-               
              
             } 
-            if(!LR) reverse(cList.begin(),cList.end());
+            if(!left_to_right_flag) reverse(cList.begin(),cList.end());
            
             result.push_back(cList);
-            LR = !LR;
-            
-            
+            left_to_right_flag = !left_to_right_flag;
         }
-        
         return result;
-        
     }
 };
