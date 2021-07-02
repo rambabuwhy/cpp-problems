@@ -23,8 +23,8 @@ public:
         
         vector<int> result;
         stack<TreeNode*> S;
-        TreeNode*curr = root;
         
+        TreeNode*curr = root;
         while(curr || !S.empty()){
             
             while(curr){
@@ -37,12 +37,8 @@ public:
             
             result.push_back(curr->val);
             
-            curr= curr->right;
-            
+            curr= curr->right;   
         }
-        
         return result;
-        
-        
     }
 };
