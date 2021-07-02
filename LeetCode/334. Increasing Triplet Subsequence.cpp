@@ -24,11 +24,11 @@ public:
         int first = INT_MAX;
         int Second = INT_MAX;
         
-        for (int i = 0 ; i<nums.size(); i++){
+        for (int i=0 ; i<nums.size(); i++){
             
             if(first >= nums[i])  first = nums[i];
               
-            else if( Second >= nums[i])  Second = nums[i];
+            else if(Second >= nums[i])  Second = nums[i];
             
             else  return true;
         }
