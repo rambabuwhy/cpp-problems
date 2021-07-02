@@ -27,6 +27,14 @@ Explanation: 342 + 465 = 807.
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
     
@@ -39,21 +47,25 @@ public:
         int carry = 0;
         while(l1 || l2){
             
-            //if list is null add 0 other wise list value
+            //get values from two lists
+            //if list is null add 0 otherwise get list value
             int v1 = l1 ? l1->val : 0;
             int v2 = l2 ? l2->val : 0;
             
+            //get sum(%) and carry(/)
             int sum = carry + v1 + v2;
             carry = sum / 10;
             
+            //add it to new dummy list
             curr->next  = new ListNode(sum % 10);
             curr = curr->next;
             
-            //move forward
+            //move both list forward
             l1 ? l1 = l1->next : l1 = nullptr;
             l2 ? l2 = l2->next : l2 = nullptr;
         }
     
+        //verify if carry has value
         carry > 0 ? curr->next = new ListNode(carry) : nullptr;
         
         return dummy->next;
