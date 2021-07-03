@@ -31,7 +31,10 @@ public:
             return;
         }
         
+        //include open parenthesis; increment open count
         if(open < n)        util(result, curr+"(", open+1, close, n);
+        
+        //include close parenthesis; increment close count
         if(close < open)    util(result, curr+")", open, close+1, n); 
         
     }
