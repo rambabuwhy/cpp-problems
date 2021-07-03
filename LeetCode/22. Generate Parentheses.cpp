@@ -23,6 +23,7 @@ public:
         return result;
     }
     
+    //take open/close parenthesis count
     void util (vector<string> &result, string curr, int open, int close, int n){
         
         if(curr.size() == 2*n){
