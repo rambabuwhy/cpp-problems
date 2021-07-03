@@ -34,24 +34,24 @@ public:
         
         vector<string> result;
         backtrack(digits, result, "", 0);
-        
         return result;        
     }
     
     //use index to iterate input "digits"
-    //if index == digit size  return output  then backtrack
-    //take word of index, then iterate the word
-    void backtrack(string digits, vector<string> &result, string currString,int index){
+    void backtrack(string digits, vector<string> &result, string currString, int index){
         
+        //if index == digit size  return output  then backtrack
         if(index == digits.size()) {
             result.push_back(currString);
             return;
         }
         
+        //take word of index, then iterate the word
         string curr = P[digits[index]-'0'];
         for(int i = 0; i< curr.size();i++) {
+            
             currString.push_back(curr[i]);
-            backtrack(digits, result, currString,index+1);
+            backtrack(digits, result, currString, index+1);
             currString.pop_back();
         }              
     }
