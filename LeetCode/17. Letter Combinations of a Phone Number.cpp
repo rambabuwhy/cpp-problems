@@ -52,6 +52,8 @@ public:
             
             currString.push_back(curr[i]);
             backtrack(digits, result, currString, index+1);
+            
+            //when backtrack 'index' value is decreased : So need to remove that char
             currString.pop_back();
         }              
     }
