@@ -39,23 +39,20 @@ public:
         int left = 0;
         int mid = 0;
         int right = nums.size() -1;
+        
+        //mid vs right not left vs right
         while( mid <= right ) {
             
-            switch(nums[mid]) {
-                case 0:
-                    swap(nums, left, mid);
-                    left++;
-                    mid++;
-                    break;
-                case 1:
-                    mid++;
-                    break;
-                case 2:
-                    swap(nums, mid, right);
-                    right--;
-                    break;
+            if(nums[mid] == 0){
+                swap(nums, left, mid);
+                left++;
+                mid++;
+            } else if(nums[mid] == 1){
+                mid++;
+            } else if(nums[mid] == 2){
+                swap(nums, mid, right);
+                right--;
             }
         }
-        
     }
 };
