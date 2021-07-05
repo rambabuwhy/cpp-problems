@@ -1,9 +1,28 @@
 /*
-Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.
+Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
 
-Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.
+We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
 
-Note: You are not suppose to use the library's sort function for this problem.
+You must solve this problem without using the library's sort function.
+
+ 
+
+Example 1:
+
+Input: nums = [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+Example 2:
+
+Input: nums = [2,0,1]
+Output: [0,1,2]
+Example 3:
+
+Input: nums = [0]
+Output: [0]
+Example 4:
+
+Input: nums = [1]
+Output: [1]
 */
 class Solution {
 public:
@@ -14,24 +33,26 @@ public:
         
     }
     void sortColors(vector<int>& nums) {
+        
         if(nums.size() < 1 )  return;
-        int L = 0;
-        int M = 0;
-        int R = nums.size() -1;
-        while( M<=R ) {
-            cout<<"M:"<<nums[M]<<" ";
-            switch(nums[M]) {
+       
+        int left = 0;
+        int mid = 0;
+        int right = nums.size() -1;
+        while( mid <= right ) {
+            
+            switch(nums[mid]) {
                 case 0:
-                    swap(nums,L, M);
-                    L++;
-                    M++;
+                    swap(nums, left, mid);
+                    left++;
+                    mid++;
                     break;
                 case 1:
-                    M++;
+                    mid++;
                     break;
                 case 2:
-                    swap(nums,M,R);
-                    R--;
+                    swap(nums, mid, right);
+                    right--;
                     break;
             }
         }
