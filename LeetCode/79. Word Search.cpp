@@ -16,31 +16,22 @@ public:
             }
         }
         return false;
-        
     }
+    
+    vector<vector<int>> dir = {{0,-1},{-1,0},{0,1},{1,0}};
     
     bool dfs(int r, int c, vector<vector<char>>& board, string word, int index){
         
-        if(index >= word.size() ){
-            return true;
-        }
+        if(index >= word.size()) return true;
         
-        if(r < 0 || r > board.size()-1 ||
-           c < 0 || c > board[0].size()-1 || 
-           (word[index] != board[r][c])){
-            
+        if(r < 0 || r > board.size()-1 || c < 0 || c > board[0].size()-1 || (word[index] != board[r][c])) {
             return false;
         }
         
+        //to eliminate loop in current word. we need to replace the letter later for other word
         board[r][c] = '#';
-        
-        int dr[4]={0,-1,0,1};
-        int dc[4]={-1,0,1,0};
-        
-        for(int i = 0; i < 4; i++){
-            if(dfs(r+dr[i], c+dc[i], board, word, index+1)){
-                return true;
-            }
+        for(int i = 0; i < 4; i++) {  
+            if(dfs(r+dir[i][0], c+dir[i][1], board, word, index+1)) return true; 
         }
         
         board[r][c] = word[index];
