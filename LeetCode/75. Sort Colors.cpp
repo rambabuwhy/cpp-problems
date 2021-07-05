@@ -40,7 +40,7 @@ public:
         int mid = 0;
         int right = nums.size() -1;
         
-        //mid vs right not left vs right
+        //compare nums[mid]
         while( mid <= right ) {
             
             if(nums[mid] == 0){
