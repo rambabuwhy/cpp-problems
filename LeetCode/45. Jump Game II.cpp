@@ -26,17 +26,19 @@ public:
     //Update farthest to i + nums[i] if the latter is larger.
     //If we reach currentJumpEnd, it means we finished the current jump, and can begin checking the next jump by setting currentJumpEnd = farthest
     int jump(vector<int>& nums) {
-        int resultCount =0;
-        int farthest = 0;
-        int currJumpEnd =0;
         
+        int minJumps = 0;
+        int maxJump = 0;
+        
+        int currJump = 0;
         for(int i=0; i<nums.size()-1; i++){  
-            farthest = max(farthest, i+nums[i]);
-            if(i==currJumpEnd){
-                resultCount++;
-                currJumpEnd = farthest;
+            maxJump = max(maxJump, i+nums[i]);
+            if(i == currJump){
+                minJumps++;
+                currJump = maxJump;
             }
         }
-        return resultCount; 
+        return minJumps; 
     }
+};
 };
