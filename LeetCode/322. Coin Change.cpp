@@ -37,6 +37,7 @@ public:
         //fill all values with max amount
         vector<int> dp(amount+1, amount+1);
         
+        //for sum 0 :- we have 0 coins
         dp[0] = 0;
         for(int i=1; i<=amount; i++){
             for(int j=0; j<coins.size(); j++){
