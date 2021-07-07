@@ -20,20 +20,19 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum jump 
 
 */
 
-
-
-
 class Solution {
 public:
-    // if i+nums[i] can reach lastPos then move lastPos from N to i and
-    //finally check lastpos is at 0th position or not
+
     bool canJump(vector<int>& nums) {  
-        int lastPos = nums.size()-1;
-        for(int i=nums.size()-1; i>=0; i--){
-            if(i+nums[i] >= lastPos){
-                lastPos = i;
-            }
-        }  
-        return lastPos == 0;
+        
+        int n = nums.size();
+        int maxJump = 0;
+        
+        //maxJump always greater than iterator i
+        for (int i = 0; i < n; i++){
+            if (i > maxJump) return false;
+            maxJump = max(i + nums[i], maxJump);            
+        }
+        return true;
     }
 };
