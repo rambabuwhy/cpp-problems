@@ -36,6 +36,7 @@ public:
     bool hasNext() {
         
         //if you move from one vector to next.  'in' should be 0th element and 'out' shut be next vector
+        //while loop to skip empty vector
         while(out <lvec.size() && in == lvec[out].size()){
             in=0;
             out++;
