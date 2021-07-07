@@ -20,34 +20,27 @@ iterator.hasNext(); // return false
 class Vector2D {
 public:
     
-    vector<vector<int>> lv;
+    vector<vector<int>> lvec;
     int in =0;
     int out =0;
+    
     Vector2D(vector<vector<int>>& v) {
-        
-        lv= v;
-        
+        lvec = v;
     }
     
     int next() {
-        
         if(!hasNext()) return -1;
-            
-        return lv[out][in++];
-        
+        return lvec[out][in++];
     }
     
     bool hasNext() {
         
-        //if "in" is at last element move both to next vector' 0th elment to in and out++
-       //in == lv[out].size()  : also skip empty vectors
-        while(out <lv.size() && in == lv[out].size()){
+        //if you move from one vector to next.  in should be 0th element and out shut be next vector
+        while(out <lvec.size() && in == lvec[out].size()){
             in=0;
             out++;
         }
-        
-        return out < lv.size();
-        
+        return out < lvec.size();
     }
 };
 
