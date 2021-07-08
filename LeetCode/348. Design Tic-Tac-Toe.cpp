@@ -13,9 +13,9 @@ class TicTacToe {
 public:
     /** Initialize your data structure here. */
     TicTacToe(int n) {
-        total = n;
-        R.resize(n);
-        C.resize(n);
+        this->n = n;
+        rows.resize(n);
+        cols.resize(n);
         ld = 0;
         rd = 0;
         
@@ -35,30 +35,37 @@ public:
         if(player == 1) add = 1;
         if(player == 2) add = -1;
         
-        if(row == col) ld = ld + add;
-        if(row == total -col -1) rd = rd + add;
+        //step 1: count howmany times playes marked:
+        //count it for every row, coloum and diagonals
         
-        R[row] = R[row] + add;
-        C[col] = C[col] + add;
+        //row count
+        rows[row] = rows[row] + add;
         
-        if( abs(R[row]) == total ||
-            abs(C[col]) == total ||
-            abs(ld) == total ||
-            abs(rd) == total     ) {
+        //coloum count
+        cols[col] = cols[col] + add;
+        
+        //diagonal count
+        if(row == col)  ld = ld + add;
+        
+        //anti-diagonal  count
+        if(row == n-col-1) rd = rd + add;
+        
+        
+        //step 2: verify if any count is equal to n will win
+        if( abs(rows[row]) == n ||
+            abs(cols[col]) == n ||
+            abs(ld) == n ||
+            abs(rd) == n ) {
             
             return player;
         }
-        
         return 0;
-        
-        
-        
     }
     
 private:
-    vector<int> R;
-    vector<int> C;
-    int ld,rd,total;
+    vector<int> rows;
+    vector<int> cols;
+    int ld, rd, n;
 };
 
 /**
