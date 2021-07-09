@@ -32,13 +32,13 @@ public:
         int end = 0;
         while(start < n) {
          
-            //move end before next word
+            //move 'end' before next word
             while(end < n && s[end] != ' ') end++;
             
             //reverse [start, end): include 'start' and not include 'end'
             reverse(s.begin()+start, s.begin()+end);  
             
-            //move start and end begin of the next word
+            //move 'start' and 'end' to the begining of the next word
             end++;
             start = end;
         }
