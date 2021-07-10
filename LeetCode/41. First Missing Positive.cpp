@@ -26,16 +26,16 @@ public:
         int n = nums.size();
 
         //verify '1' exists or not
-        int number_of_ones = 0;
+        bool oneExist = false;
         for (int i = 0; i < n; i++){
              if (nums[i] == 1) {
-                number_of_ones++;
+                oneExist = true;
                 break;
             }
         }
            
         //if '1'  does not  exist then '1'  is answer
-        if (number_of_ones == 0) return 1;
+        if (oneExist == false) return 1;
         
         //replace all  negetives and zeros and greater than n to '1'
         for (int i = 0; i < n; i++){
