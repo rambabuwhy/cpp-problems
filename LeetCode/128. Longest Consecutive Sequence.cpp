@@ -17,8 +17,6 @@ Output: 9
 
 */
 
-
-
 class Solution {
 public:
     
@@ -29,7 +27,11 @@ public:
         unordered_set<int> uset(nums.begin(), nums.end());
         
         int result = 0;
-        for(auto num:nums){
+       
+        for(auto num : nums){
+            
+            //if num-1 present in set: means we already proccessed 
+            //while loop for num+1; count and find max of all  counts
             if(uset.find(num-1) == uset.end()){
                 int curr_num = num;
                 int curr_result = 1;
@@ -40,6 +42,7 @@ public:
                 result = max(result,curr_result);
             }
         }
+        
         return result;
     }
 };
