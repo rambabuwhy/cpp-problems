@@ -19,8 +19,6 @@ Input: nums = [7,8,9,11,12]
 Output: 1
 
 */
-
-
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
@@ -28,16 +26,16 @@ public:
         int n = nums.size();
 
         //verify '1' exists or not
-        int contains = 0;
+        int number_of_ones = 0;
         for (int i = 0; i < n; i++){
              if (nums[i] == 1) {
-                contains++;
+                number_of_ones++;
                 break;
             }
         }
            
         //if '1'  does not  exist then '1'  is answer
-        if (contains == 0) return 1;
+        if (number_of_ones == 0) return 1;
         
         //replace all  negetives and zeros and greater than n to '1'
         for (int i = 0; i < n; i++){
