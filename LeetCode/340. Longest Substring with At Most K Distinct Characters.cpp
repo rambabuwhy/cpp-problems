@@ -24,6 +24,8 @@ public:
     int lengthOfLongestSubstringKDistinct(string s, int k) {
         
         int n = s.size();
+        
+        //map: char -> frequency 
         unordered_map<char,int> lmap;
         
         if(k * n == 0) return 0;
