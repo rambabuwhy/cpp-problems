@@ -36,12 +36,11 @@ public:
                 currentNumber = (currentNumber * 10) + (s[i] - '0');
             }
             
-            
             //Otherwise
             if (!isdigit(s[i]) && !iswspace(s[i]) || i == s.size() - 1) {
                 
-                //if  + and -   :    push
-                //if  * and /   :do operation and push to stack
+                //if  + or -   :push 
+                //if  * or /   :do operation and push to stack
                 if (operation == '-') {
                     stack.push(-currentNumber);
                 } else if (operation == '+') {
@@ -60,14 +59,11 @@ public:
             }
         }
         
-        //store it into result 
-        
         int result = 0;
         while (stack.size() != 0) {
             result += stack.top();
             stack.pop();
         }
         return result;
-        
     }
 };
