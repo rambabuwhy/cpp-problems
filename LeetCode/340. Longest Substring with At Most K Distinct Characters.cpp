@@ -19,39 +19,35 @@ Explanation: The substring is "aa" with length 2.
 
 class Solution {
 public:
+    
+    //sliding window algorithm
     int lengthOfLongestSubstringKDistinct(string s, int k) {
         
         int n = s.size();
+        unordered_map<char,int> lmap;
         
-        if(k * n == 0)
-        return 0;
+        if(k * n == 0) return 0;
         
-        int ws = 0;
-        int longest_str = 0;
-        unordered_map<char,int> mp;
-        
-        for( int we =0; we<n; we++){
+        int max_length = 0;
+        int wstart = 0;
+        for( int wend =0; wend<n; wend++){
             
-            char right_char = s[we];
-            mp[right_char]++;
+            char right_char = s[wend];
+            lmap[right_char]++;
             
-            if(mp.size() > k){
+            //if window size is more than k; shrink it
+            if(lmap.size() > k){
                 
-                int left_char = s[ws];
-                mp[left_char]--;
+                int left_char = s[wstart];
+                lmap[left_char]--;
                 
-                if(mp[left_char] == 0)
-                mp.erase(left_char);
+                if(lmap[left_char] == 0)
+                lmap.erase(left_char);
                 
-                ws++;
+                wstart++;
             }
-            
-            longest_str = max(longest_str, we - ws + 1);
-            
-            
+            max_length = max(max_length, wend - wstart + 1); 
         }
-        
-        return longest_str;
-        
+        return max_length;
     }
 };
