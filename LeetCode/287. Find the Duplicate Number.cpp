@@ -1,29 +1,54 @@
 /*
-Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
+Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
 
+There is only one repeated number in nums, return this repeated number.
+
+You must solve the problem without modifying the array nums and uses only constant extra space.
+
+ 
+
+Example 1:
+
+Input: nums = [1,3,4,2,2]
+Output: 2
+Example 2:
+
+Input: nums = [3,1,3,4,2]
+Output: 3
+Example 3:
+
+Input: nums = [1,1]
+Output: 1
+Example 4:
+
+Input: nums = [1,1,2]
+Output: 1
 */
+
 class Solution {
 public:
+    
+    //Floyd's Tortoise and Hare (Cycle Detection)
+    //if cycle exist; find begining of the cycle
     int findDuplicate(vector<int>& nums) {
         
-        if(nums.size() <= 1){
-            return 0;
-        }
-        int T = nums[0];
-        int H = nums[0];
-        do{
-            T = nums[T];
-            H = nums[nums[H]];
+        if(nums.size() <= 1) return 0;
+    
+        //find cycle
+        int slow = nums[0];
+        int fast = nums[0];
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
             
-        }while(T != H);
+        } while(slow != fast);
         
-        T = nums[0];
-        while ( T != H){
-            T = nums[T];
-            H = nums[H];
+        //find begining of the cycle
+        slow = nums[0];
+        while ( slow != fast){
+            slow = nums[slow];
+            fast = nums[fast];
         }
-        
-        return T;
-        
+        return slow;
     }
 };
