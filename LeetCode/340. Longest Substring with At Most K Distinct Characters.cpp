@@ -30,7 +30,7 @@ public:
         
         int max_length = 0;
         int wstart = 0;
-        for( int wend =0; wend<n; wend++){
+        for( int wend=0; wend<n; wend++){
             
             char right_char = s[wend];
             lmap[right_char]++;
@@ -41,8 +41,7 @@ public:
                 int left_char = s[wstart];
                 lmap[left_char]--;
                 
-                if(lmap[left_char] == 0)
-                lmap.erase(left_char);
+                if(lmap[left_char] == 0) lmap.erase(left_char);
                 
                 wstart++;
             }
