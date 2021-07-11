@@ -31,10 +31,11 @@ public:
         for(int i=0; i<n; i++){
             
             //if num-1 present in set: means we already proccessed 
-            //while loop for num+1; count and find max of all  counts
             if(uset.find(nums[i]-1) == uset.end()){
                 int curr_num = nums[i];
                 int curr_result = 1;
+                
+                //loop for nums+1
                 while(uset.find(curr_num+1) != uset.end()){
                     curr_num++;
                     curr_result++;
