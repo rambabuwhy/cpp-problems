@@ -27,6 +27,10 @@ Explanation: Your function can return either index number 1 where the peak eleme
 
 class Solution {
 public:
+    
+    //binary search
+    //if mid < mid+1  then check next of mid+1;  move left
+    //else  move right
     int findPeakElement(vector<int>& nums) {
         int left = 0;
         int right = nums.size()-1;
