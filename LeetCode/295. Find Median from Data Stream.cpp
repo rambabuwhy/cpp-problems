@@ -45,13 +45,14 @@ public:
     //size(minheap) = size(maxheap) + 1
     void addNum(int num) {
         
+        //step 1 insert
         //always move big number to min heap
         //todo that first push into max  then move top to min heap
         max_pq.push(num);
         min_pq.push(max_pq.top());
         max_pq.pop();
 
-        //re balance
+        //step 2: balance
         if (max_pq.size() < min_pq.size()) {
             max_pq.push(min_pq.top());
             min_pq.pop();
