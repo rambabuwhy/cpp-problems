@@ -34,10 +34,8 @@ public:
         int high = x;
         while (low <= high) {
             
-            //Partition X  
+            //Partition X & Y
             int x_partition = (low + high)/2;
-            
-            //Partition Y 
             int y_partition = (x + y + 1)/2 - x_partition;
             
             //variables which partition x 
