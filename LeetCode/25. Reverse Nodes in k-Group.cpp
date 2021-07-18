@@ -25,63 +25,41 @@ You may not alter the values in the list's nodes, only nodes itself may be chang
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
-public:
+    //1: head is starting of list of k length
+    //2: rev_head is pointting to lastnode of k length
+    //3: return rev_head;
+    ListNode* reverseKGroup(ListNode* head, int k) {
     
-    ListNode* reverse(ListNode* head, int k){
+        ListNode * curr = head;
+        int count = 0;
+        
+        //move curr to k nodes
+        while(count < k && curr) { 
+            curr = curr->next;
+            count++;
+        }
+        
+        if(count == k) {
+            ListNode* rev_head = reverse(head, k);
+            head->next = reverseKGroup(curr, k);
+            return rev_head;
+        }
+        return head;
+    }
+    
+    ListNode* reverse(ListNode* head, int k) {
         
         ListNode* curr = head;
         ListNode* prev = nullptr;
         
-        while(k>0){
+        while(k>0) {
             
-            ListNode* nxt = curr->next;
-            
-            curr->next = prev;
-            
+            ListNode* next = curr->next;    
+            curr->next = prev;    
             prev = curr;
-            curr = nxt;
-            
-            k--;
-      
-            
+            curr = next;  
+            k--;   
         }
-        
         return prev;
-        
-    }
-    ListNode* reverseKGroup(ListNode* head, int k) {
-        
-        
-        //point 1: head is starting of list of k length
-        //point 2: rev_head is pointting to lastnode of k length
-        //point 3: return rev_head;
-        ListNode * curr = head;
-        
-        int count = 0;
-        
-        //move curr to k nodes
-        while(count < k && curr){
-            
-            curr = curr->next;
-            
-            count++;
-            
-        }
-        
-        if(count == k){
-            
-            ListNode* rev_head = reverse(head,k);
-            
-            head->next = reverseKGroup(curr,k);
-            
-            return rev_head;
-            
-        }
-        
-        return head;
-        
-        
-        
     }
 };
