@@ -11,52 +11,41 @@ There may be multiple correct orders, you just need to return one of them. If it
 
 class Solution {
 public:
-    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+    vector<int> findOrder(int numCourses, vector<vector<int>>& edges) {
         
-        //Initialize grapph, indegree and  result vector
-        vector<int> indegree(numCourses+1,0);
-        vector<vector<int> > graph(numCourses);
-        vector<int> result;
+        //Initialize graph, indegree and  result vector
+        vector<vector<int>> graph(numCourses);
+        vector<int> indegree(numCourses + 1, 0);
         
-        //build graph
-        for(int i = 0; i < prerequisites.size(); i++){
-            graph[prerequisites[i][1]].push_back(prerequisites[i][0]);
-            indegree[prerequisites[i][0]]++;
-            
+        //build graph for edge 1->0
+        //[0, 1]: indicates take course 0 you have to first take course 1
+        for(auto edge : edges) {
+            graph[edge[1]].push_back(edge[0]);
+            indegree[edge[0]]++;
         }
-     
 
-        //BFS start
-        
+        //push all indegree == 0;
         queue<int> Q;
-        
-        //push  all indegree == 0;
-        for(int i = 0;  i < numCourses;  i++){
-            if(indegree[i]==0){
-                Q.push(i);
-            }
+        for(int i = 0; i<numCourses; i++){
+            if(indegree[i]==0) Q.push(i);
         }
         
+        vector<int> result;
         while(!Q.empty()){
            
+            //remove node of indegree 0
             int curr = Q.front();
-            
             result.push_back(curr);
             Q.pop();
             
+            //decrement indegree of its children
             for(auto child: graph[curr]) {
-                
                 indegree[child]--;
-                if(indegree[child]==0) {
-                    Q.push(child);
-                }
-             
+                if(indegree[child]==0) Q.push(child);
             }
         }
         
-        if(result.size() == numCourses){
-            return result;
-        }
+        if(result.size() == numCourses) return result;
         return vector<int>();
     }
 };
