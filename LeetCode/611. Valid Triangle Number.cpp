@@ -23,27 +23,29 @@ public:
     
     //Sorting
     int triangleNumber(vector<int>& nums) {
-        
-        int n = nums.size();
+  
+        sort(nums.begin(), nums.end());
         int result = 0;
         
-        sort(nums.begin(), nums.end());
-        for (int i = n-1; i >= 0; i--) {
+        //for every element  search other two using binary search
+        for (int i = nums.size()-1; i >= 0; i--) {
             
-            int lo = 0;
-            int hi = i-1;
-            while (lo < hi) {
-                if (nums[lo] + nums[hi] > nums[i]) {
+            int left = 0;
+            int right = i-1;
+            while (left < right) {
+                if (nums[left] + nums[right] > nums[i]) {
                     
-                    //all elements between lo-hi satisfies
-                    result += hi - lo;
-                    hi--;
+                    //all elements between left-right satisfies
+                    result += right - left;
+                    right--;
                 }
                 else {
-                    lo++;
+                    left++;
                 }
             }
         }
         return  result;
     }
 };
+
+
