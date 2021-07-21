@@ -25,6 +25,8 @@ You may not alter the values in the list's nodes, only nodes itself may be chang
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+ class Solution {
+public:
     //1: head is starting of list of k length
     //2: rev_head is pointting to lastnode of k length
     //3: return rev_head;
@@ -39,6 +41,8 @@ You may not alter the values in the list's nodes, only nodes itself may be chang
             count++;
         }
         
+        //Recursion function needs to return the head of the reversed linked list.
+        //This would simply be the kth nodes in the list passed to the recursion function because after reversing the first k nodes, the kth node will become the new head and so on.
         if(count == k) {
             ListNode* rev_head = reverse(head, k);
             head->next = reverseKGroup(curr, k);
