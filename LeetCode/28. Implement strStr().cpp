@@ -33,12 +33,12 @@ public:
     //haystack.size() > needle.size()
     int strStr(string haystack, string needle) {
         
-        //sanity
-        if(haystack.size() < needle.size()) return -1;
-        if(!needle.size()) return 0;
-        
         int needle_size = needle.size();
         int haystack_size = haystack.size();
+        
+        //sanity
+        if(haystack_size < needle.size()) return -1;
+        if(!needle_size) return 0;
         
         //p: base  m: modulo
         const int prime = 31; 
@@ -47,7 +47,6 @@ public:
         //pre calculate powers into a vector
         vector<long> prime_pow(haystack_size); 
         prime_pow[0] = 1;  //p_pow ^ 0 = 1
-        
         for (int i = 0; i < (int)prime_pow.size()-1; i++){
             prime_pow[i+1] = (prime_pow[i] * prime) % mod;
         } 
