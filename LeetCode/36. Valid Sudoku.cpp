@@ -46,12 +46,15 @@ class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) {
         
-        vector<vector<int>> row(9,vector<int>(9,0));
-        vector<vector<int>> col(9,vector<int>(9,0));
-        vector<vector<int>> box(9,vector<int>(9,0));
+        int rowsize = board.size();
+        int colsize = board[0].size();
         
-        for(int i=0; i<board.size(); i++){
-            for(int j=0; j<board[0].size(); j++){
+        vector<vector<int>> row(rowsize, vector<int>(rowsize, 0));
+        vector<vector<int>> col(colsize, vector<int>(colsize, 0));
+        vector<vector<int>> box(rowsize, vector<int>(rowsize, 0));
+        
+        for(int i=0; i<rowsize; i++){
+            for(int j=0; j<colsize; j++){
                 
                 if(board[i][j] == '.') continue;
                 
