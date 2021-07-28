@@ -58,8 +58,9 @@ public:
                 
                 if(board[i][j] == '.') continue;
                 
-                //get number in box and use it as index. set 1 to its index.
-                // if already 1 exist then return false
+                //get number in box and use it as index. 
+                //set 1 to its index  for its row, col and box.
+                //if already 1 exist then return false
                 int num = board[i][j]-'0'-1;
                 
                 //get box index
