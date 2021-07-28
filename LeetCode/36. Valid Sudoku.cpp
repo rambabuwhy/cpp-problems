@@ -64,7 +64,7 @@ public:
                 // -'0' to get int and -1 to adjust to 0th index
                 int num = board[i][j]-'0'-1;
                 
-                //get box index
+                //get box index:  i/3 * 3 ->  row + j/3 coloum
                 int k = (i/3)*3 + (j/3);
                 
                 //verify if already exist => 1: exist  0: does not exist
