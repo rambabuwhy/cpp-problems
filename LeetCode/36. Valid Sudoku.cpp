@@ -61,6 +61,7 @@ public:
                 //get number in box and use it as index. 
                 //set 1 to its index  for its row, col and box.
                 //if already 1 exist then return false
+                // -'0' to get int and -1 to adjust to 0th index
                 int num = board[i][j]-'0'-1;
                 
                 //get box index
