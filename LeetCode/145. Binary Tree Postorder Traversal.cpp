@@ -45,3 +45,29 @@ public:
         return result;
     }
 };
+
+class Solution {
+public:
+    
+    
+    vector<int> postorderTraversal(TreeNode* root) {
+    
+        vector<int> result;
+        stack<TreeNode*> lstack;
+        
+        TreeNode *curr = root;
+        while(!lstack.empty() || curr!= nullptr){
+            
+            if(curr){
+                lstack.push(curr);
+                result.insert(result.begin(), curr->val);
+                curr = curr->right;
+            } else {
+                TreeNode *temp = lstack.top();
+                lstack.pop();
+                curr = temp->left;
+            }           
+        }
+        return result;
+    }
+};
