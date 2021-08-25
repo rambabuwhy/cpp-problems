@@ -45,32 +45,18 @@ public:
         while(!Q.empty()){
             
             int size = Q.size();
-            
-            
-            for(int i = 0;i < size;i++){
+            for(int i = 0; i<size; i++){
                 
                 Node* curr = Q.front();
                 Q.pop();
                 
-                if(i == size-1){
-                    curr->next = nullptr;
-                }
-                else{
-                    curr->next = Q.front();
-                }
-                
-              
+                if(i == size-1) curr->next = nullptr;
+                else curr->next = Q.front();
+             
                 if(curr->left) Q.push(curr->left);
                 if(curr->right) Q.push(curr->right);
-                
-               // curr = curr->next;
-                
-                
             }
-            
         }
-        
         return root;
-        
     }
 };
