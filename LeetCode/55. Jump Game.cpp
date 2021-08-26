@@ -29,6 +29,7 @@ public:
         int maxJump = 0;
         
         //maxJump always greater than iterator i
+        // i + nums[i] : from ith index we can reach i+nums[i] th  index
         for (int i = 0; i < n; i++){
             if (i > maxJump) return false;
             maxJump = max(i + nums[i], maxJump);            
