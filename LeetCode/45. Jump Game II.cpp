@@ -32,6 +32,7 @@ public:
         
         int currJump = 0;
         for(int i=0; i<nums.size()-1; i++){  
+            // i + nums[i] : from ith index we can reach i+nums[i] th  index
             maxJump = max(maxJump, i+nums[i]);
             if(i == currJump){
                 minJumps++;
