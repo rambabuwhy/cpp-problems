@@ -26,24 +26,15 @@ Output: False
 class Solution {
 public:
     bool detectCapitalUse(string word) {
-        
-        
-       // is allcaps = false;
-        int allcaps = 0;
-        for(int i =0; i<word.size();i++){
-            
-            if(isupper(word[i])) {
-
-                allcaps++;
-                
-            }
-       
+     
+        int count = 0;
+        for(int i =0; i<word.size();i++) {
+            if(isupper(word[i])) count ++;
         }
         
-        if(allcaps == word.size() || allcaps ==0 )  return true;
-        if(allcaps == 1 && isupper(word[0]))  return true;
+        if(count == word.size() || count ==0 )  return true;
+        if(count == 1 && isupper(word[0]))  return true;
             
         return false;
-        
     }
 };
