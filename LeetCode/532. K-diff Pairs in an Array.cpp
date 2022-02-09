@@ -38,12 +38,13 @@ public:
         int result=0;
         for(auto p:umap) {
             
-            if(k > 0 && umap.count(p.first + k) > 0 ){
+            if(k > 0 && umap.count(p.first + k) > 0 ){  //count if x+p exists
                 result++;
-            } else if( k==0 && p.second >1) {
+            } else if( k==0 && p.second >1) {   //count if a number's  frequency '>0' and if k==0
                 result++;
             } 
         }
         return result;
     }
 };
+
