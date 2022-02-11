@@ -35,6 +35,8 @@ public:
         for(int i = 0; i< s2.size(); i++) {
             
             vs2[s2[i]-'a']++;
+            
+            //make sure always the size of vs1 and vs2 are same
             if(i > s1.size()-1) {
                 vs2[s2[i-s1.size()]-'a']--;
             }
