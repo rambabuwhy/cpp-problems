@@ -24,7 +24,7 @@ class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         
-        unordered_map<string, vector<string>> mmap = {};
+        unordered_map<string, vector<string>> umap = {};
         vector<vector<string>> result = {};
         
         if(strs.size() < 1) return result;
@@ -33,10 +33,10 @@ public:
             
             string original = str;
             sort(str.begin(),str.end());
-            mmap[str].push_back(original);
+            umap[str].push_back(original);
         }
         
-        for(auto m:mmap){
+        for(auto m:umap){
             result.push_back(m.second);  
         }
         return result;
