@@ -43,21 +43,18 @@ Explanation:
 
 */
 
-
-
-class Solution {
 class Solution {
 public:
     vector<vector<int>> combinationSum3(int k, int n) {
         
         vector<vector<int>> result;
         vector<int> curr;
-        backTrack(k,n, 1,result,curr);
+        backTrack(k, n, 1, result, curr);
         return result;
         
     }
     
-    void backTrack(int k, int target,int index, vector<vector<int>> &result,vector<int> &curr){
+    void backTrack(int k, int target, int index, vector<vector<int>> &result, vector<int> &curr){
         
         if(target == 0 && curr.size() ==k){
             result.push_back(curr);
