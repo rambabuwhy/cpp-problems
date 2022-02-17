@@ -54,19 +54,18 @@ public:
         
     }
     
-    void backTrack(int k, int target, int index, vector<vector<int>> &result, vector<int> &curr){
+    void backTrack(int set_size, int target, int index, vector<vector<int>> &result, vector<int> &curr){
         
-        if(target == 0 && curr.size() ==k){
+        if(target == 0 && curr.size() == set_size){
             result.push_back(curr);
         }
-        else if( target < 0 || curr.size() == k){
+        else if( target < 0 || curr.size() == set_size){
             return;
-            
         }
         
         for(int i=index; i<=9; i++){
             curr.push_back(i);
-            backTrack(k, target-i, i+1, result, curr);
+            backTrack(set_size, target-i, i+1, result, curr);
             curr.pop_back();
         } 
         
