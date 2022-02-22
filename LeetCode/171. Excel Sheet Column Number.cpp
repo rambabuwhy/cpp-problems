@@ -27,14 +27,10 @@ Output: 701
 class Solution {
 public:
     int titleToNumber(string s) {
-        
-        //Logic: same as base 10 ;  this is base 26;  just add as logic of base 10
         int result = 0;
         for(int i = 0; i < s.size(); i++) {
-             result = result * 26 + (s[i] -'A') + 1;
+            result = result * 26 + (s[i] -'A') + 1;
         }
-        
         return  result;
-        
     }
 };
