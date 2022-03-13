@@ -30,6 +30,9 @@ Output: true
 
 */
 
+//Time complexity : O(n)
+//Space complexity : O(n)
+
 class Solution {
 public:
     bool isValid(string s) {   
