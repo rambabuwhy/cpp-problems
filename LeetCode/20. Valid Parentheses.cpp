@@ -32,40 +32,25 @@ Output: true
 
 class Solution {
 public:
-    bool isValid(string s) {
+    bool isValid(string s) {   
+
+        if(s.empty()) return true;        
+        if(s.size()<2) return false;
         
-        map<char,char> mp ={ 
-                            {'(',')'},
-                            {'{','}'},
-                            {'[',']'}
-                           };
-        if(s.empty()) 
-        return true;
-        
-        if(s.size() < 2)
-        return false;
-        
-        stack<char> stk;
-        
+        stack<char> stk;      
+        unordered_map<char,char> umap ={{'(',')'},  {'{','}'},  {'[',']'}};
         int index = 0;
-        while(index < s.size()){
+        while(index < s.size()) {
                          
-            if(s[index] == '[' || s[index] == '{' ||  s[index] == '(')
-            stk.push(s[index]);
-            
-            else {
-                if(stk.empty())
-                return false;
-                
-                char t = stk.top();
-                stk.pop();
-                
-                
-                if(mp[t] != s[index])
-                return false;
-                
-            }
-            
+            if( s[index] == '[' || s[index] == '{' || s[index] == '(') {                
+               stk.push(s[index]);  //if s[index] then push stk
+            } else {
+                if(stk.empty()) return false;                
+                char t = stk.top(); //stack only contains open brace
+                stk.pop(); 
+                cout<<t<<endl;
+                if(umap[t] != s[index]) return false;                
+            }            
             index++;
         } 
         return stk.empty();  
