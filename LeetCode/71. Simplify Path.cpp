@@ -14,41 +14,34 @@ public:
         
         if(path.empty()) return path;
         
-        stack<string> S;
-        istringstream ss(path);
-        
+        stack<string> stk;
+        istringstream ss(path);        
         string cs;
         
-        //step 1: get string by string with delimiter '\':  then  push valid string into stack
+        //get string by string with delimiter '\':  then  push valid string into stack
         while(getline(ss,cs,'/')){
             
             //if it is '.' :then dont do any thing : get next string 
-            if(!cs.empty() && cs == "."){
-                continue;
-            }
+            if(!cs.empty() && cs == ".") continue;
             
             //if it is ".." : then remove top from stach and get next string
             if(cs == ".."){
-                if(!S.empty()){
-                    S.pop();
-                }
+                
+                if(!stk.empty()) stk.pop();
+                
                 continue;
             }
             
             //if other than '.' & '..'   then push into stack
-            if(!cs.empty()){
-                S.push(cs);
-            }
-           
+            if(!cs.empty()) stk.push(cs);           
         }
         
-        //step 2: create new string from stack
+        //create new string from stack
         string result;
-        while(!S.empty()){
-            result =  "/" + S.top() + result;
-            S.pop(); 
-        }
-        
+        while(!stk.empty()){
+            result =  "/" + stk.top() + result;
+            stk.pop(); 
+        }        
         return result.empty()? "/" :result; 
     }
 };
