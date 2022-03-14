@@ -12,14 +12,14 @@ class Solution {
 public:
     string simplifyPath(string path) {
         
-        if(path.empty()) return path;
+        if(path.empty()) return path;        
         
+        istringstream ss(path);
         stack<string> stk;
-        istringstream ss(path);        
         string cs;
         
-        //get string by string with delimiter '\':  then  push valid string into stack
-        while(getline(ss,cs,'/')){
+        //get string by string with delimiter '/':  then  push valid string into stack
+        while(getline(ss, cs, '/')){
             
             //if it is '.' :then dont do any thing : get next string 
             if(!cs.empty() && cs == ".") continue;
