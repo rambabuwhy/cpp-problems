@@ -13,35 +13,26 @@ Output: [4,9]
 */
 
 class Solution {
-public:
+public:    
     
-    //algorithm:
     //construct frequency map of nums2(large size)
     //iterate small one and find result array
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
         
-        if(nums1.size() == 0 || nums2.size() ==0)
-        return vector<int>();
+        vector<int> result;
+        unordered_map <int, int> umap;        
+        
+        if(nums1.size() == 0 || nums2.size() ==0) return vector<int>();
                 
         //make nums2 is big always
-        if(nums2.size() < nums1.size()){ 
-            intersect(nums2, nums1);
-        }
-        
-        vector<int> result;
-        unordered_map <int, int> umap;
-        
+        if(nums2.size() < nums1.size()) intersect(nums2, nums1);        
+
         //frequency count for nums2
-        for(auto num:nums2){
-            umap[num]++;
-        }
+        for(auto num:nums2) umap[num]++;
         
         //iterate nums1 and find in nums2 map
-        for(auto num:nums1){
-            
-            if(umap[num]-- > 0){
-                result.push_back(num);
-            } 
+        for(auto num:nums1){            
+            if(umap[num]-- > 0) result.push_back(num);
         }
         return result;
     }
