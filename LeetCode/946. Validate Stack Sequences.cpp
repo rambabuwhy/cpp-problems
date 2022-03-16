@@ -21,21 +21,18 @@ Explanation: 1 cannot be popped before 2.
 class Solution {
 public:
     
-    //push pushed items into stack and compare top element with popped one
+    //push 'pushed array' items into stack and compare top element with 'popped array' elements
     bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
         
-        stack<int> l_stack;
-        
-        int i = 0;
+        stack<int> l_stack;        
+        int itr = 0;
         for(auto p:pushed){
             l_stack.push(p);
-            while(!l_stack.empty() && l_stack.top() == popped[i] && i<pushed.size()) {
+            while(!l_stack.empty() && l_stack.top() == popped[itr] && itr < pushed.size()) {
                 l_stack.pop();
-                i++;
+                itr++;
             }
-        }
-        
-        return i == pushed.size();
-        
+        }        
+        return itr == pushed.size();       
     }
 };
