@@ -49,9 +49,9 @@ public:
         int rowsize = board.size();
         int colsize = board[0].size();
         
-        vector<vector<int>> row(rowsize, vector<int>(rowsize, 0));
-        vector<vector<int>> col(colsize, vector<int>(colsize, 0));
-        vector<vector<int>> box(rowsize, vector<int>(rowsize, 0));
+        vector<vector<bool>> row(rowsize, vector<bool>(rowsize, false));
+        vector<vector<bool>> col(colsize, vector<bool>(colsize, false));
+        vector<vector<bool>> box(rowsize, vector<bool>(rowsize, false));
         
         for(int i=0; i<rowsize; i++){
             for(int j=0; j<colsize; j++){
@@ -59,23 +59,20 @@ public:
                 if(board[i][j] == '.') continue;
                 
                 //get number in box and use it as index. 
-                //set 1 to its index  for its row, col and box.
-                //if already 1 exist then return false
-                // -'0' to get int and -1 to adjust to 0th index
                 int num = board[i][j]-'0'-1;
-                
-                //get box index:  i/3 * 3 ->  row + j/3 coloum
+
+                //box index
                 int k = (i/3)*3 + (j/3);
                 
-                //verify if already exist => 1: exist  0: does not exist
+                //for each row verify if num already exist
                 if(row[i][num] || col[j][num] || box[k][num]) { 
                     return false;
                 }
                 
-                //fill 1 :  insert ith row num col  as 1 
-                row[i][num] = 1;
-                col[j][num] = 1;
-                box[k][num] = 1;  
+                //fill true 
+                row[i][num] = true;
+                col[j][num] = true;
+                box[k][num] = true;  
             }
         }
         return true;
