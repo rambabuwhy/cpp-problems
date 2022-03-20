@@ -30,36 +30,31 @@ public:
     // tops/bottoms any are the same.
     int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
         
-        int rotations = check(tops[0], bottoms, tops, tops.size());
+        // A[0]: A or B equal to A[0]
+        int top_rotations = check(tops[0], bottoms, tops, tops.size());
+        if (top_rotations != -1 || tops[0] == bottoms[0]) return top_rotations;
         
-        // If one could make all elements in A or B equal to A[0]
-        if (rotations != -1 || tops[0] == bottoms[0]) return rotations;
+        // B[0]: A or B equal to B[0]
+        int bottom_rotations = check(bottoms[0], bottoms, tops, tops.size());
+        if (bottom_rotations != -1 || tops[0] == bottoms[0]) return bottom_rotations;
         
-        // If one could make all elements in A or B equal to B[0]
-        else return check(bottoms[0], bottoms, tops, tops.size());
+        return -1;
     }
     
     int check(int x, vector<int>& A, vector<int>& B, int n) {
         
-        // how many rotations should be done
-        // to have all elements in A equal to x
-        // and to have all elements in B equal to x
         int rotations_a = 0, rotations_b = 0;
-
         for (int i = 0; i < n; i++) {
           
-            // rotations coudn't be done
+            // if any row not equal to x: rotation not possible
             if (A[i] != x && B[i] != x) return -1;
           
-            // A[i] != x and B[i] == x
+            // A need rotation
             else if (A[i] != x) rotations_a++;
           
-            // A[i] == x and B[i] != x    
+            // B need rotation    
             else if (B[i] != x) rotations_b++;
         }
-
-        // min number of rotations to have all
-        // elements equal to x in A or B
         return min(rotations_a, rotations_b);
   }
 };
