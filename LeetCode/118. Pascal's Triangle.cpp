@@ -20,13 +20,15 @@ public:
     vector<vector<int>> generate(int numRows) {
         
         vector<vector<int>> dp(numRows);
-
-        //fill  each row
         for (int i = 0; i < numRows; i++) {
             
+            // create row
             dp[i] = vector<int>(i + 1);
-            dp[i][0] = dp[i][i] = 1;
-  
+           
+            //first and last column is 1
+            dp[i][0] = dp[i][i] = 1; 
+            
+            //middle elements are the sum of two elements of previous row 
             for (int j = 1; j < i; j++){
                 dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
             }  
