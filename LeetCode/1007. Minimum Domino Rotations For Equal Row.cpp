@@ -30,11 +30,11 @@ public:
     // tops/bottoms any are the same.
     int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
         
-        // A[0]: A or B equal to A[0]
+        // all top row same A[0]: A or B equal to A[0]
         int top_rotations = check(tops[0], bottoms, tops, tops.size());
         if (top_rotations != -1 || tops[0] == bottoms[0]) return top_rotations;
         
-        // B[0]: A or B equal to B[0]
+        // all bottom row same B[0]: A or B equal to B[0]
         int bottom_rotations = check(bottoms[0], bottoms, tops, tops.size());
         if (bottom_rotations != -1 || tops[0] == bottoms[0]) return bottom_rotations;
         
