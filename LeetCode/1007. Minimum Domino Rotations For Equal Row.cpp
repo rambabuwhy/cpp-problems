@@ -31,30 +31,32 @@ public:
     int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
         
         // all top row same A[0]: A or B equal to A[0]
-        int top_rotations = check(tops[0], bottoms, tops, tops.size());
+        int top_rotations = minRotations(tops[0], bottoms, tops, tops.size());
         if (top_rotations != -1 || tops[0] == bottoms[0]) return top_rotations;
         
         // all bottom row same B[0]: A or B equal to B[0]
-        int bottom_rotations = check(bottoms[0], bottoms, tops, tops.size());
+        int bottom_rotations = minRotations(bottoms[0], bottoms, tops, tops.size());
         if (bottom_rotations != -1 || tops[0] == bottoms[0]) return bottom_rotations;
         
         return -1;
     }
     
-    int check(int x, vector<int>& A, vector<int>& B, int n) {
+    int minRotations(int x, vector<int>& A, vector<int>& B, int n) {
         
-        int rotations_a = 0, rotations_b = 0;
+        int a_rotations = 0, b_rotations = 0;
         for (int i = 0; i < n; i++) {
           
             // if any row not equal to x: rotation not possible
             if (A[i] != x && B[i] != x) return -1;
           
             // A need rotation
-            else if (A[i] != x) rotations_a++;
+            else if (A[i] != x) a_rotations++;
           
             // B need rotation    
-            else if (B[i] != x) rotations_b++;
+            else if (B[i] != x) b_rotations++;
         }
-        return min(rotations_a, rotations_b);
+        
+        //minimum of A,B
+        return min(a_rotations, b_rotations);
   }
 };
