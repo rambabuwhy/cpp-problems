@@ -14,22 +14,13 @@ return [0, 1]
 
 class Solution {
 public:
+    //return both indexs; map of <number, index>; rather than filling at begning ,  fill while verify
     vector<int> twoSum(vector<int>& nums, int target) {
-        
-        if(nums.size() < 2) return vector<int>();
-        
-        //use map: <num, index>
-        unordered_map<int,int> map;
-        
-        for(int i=0;i<nums.size();i++){
-            
-            auto itr = map.find(target-nums[i]);
-            if(itr != map.end()){
-                return {i,itr->second};                
-            }
-            else{
-                map[nums[i]] = i;
-            }
+        unordered_map<int,int> map; 
+        for(int i=0; i<nums.size(); i++){
+            int second = target-nums[i];
+            if(map.find(second) != map.end()) return {i, map[second]};
+            else map[nums[i]] = i;
         }
         return vector<int>();
     }
