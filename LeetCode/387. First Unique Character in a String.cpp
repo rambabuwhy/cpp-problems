@@ -22,18 +22,15 @@ class Solution {
 public:
     int firstUniqChar(string s) {
         
-        unordered_map<char,int> M;
-        
+        unordered_map<char,int> lmap;        
         //step 1: find frequency of each element
         for(auto c: s){
-            M[c]++;
+            lmap[c]++;
         }
         
         //step 2: iterate again and find first one with frequency is 1
         for(int i =0; i<s.length(); i++){
-            if(M[s[i]] == 1){
-                return i;
-            }
+            if(lmap[s[i]] == 1)  return i;
         }
         return -1;
     }
