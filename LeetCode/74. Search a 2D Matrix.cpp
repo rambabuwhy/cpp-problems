@@ -35,7 +35,7 @@ public:
             int element = matrix[row_index][col_index];   //row =  m/N  ;  coloumn = m%N;
             
             if( element == target ) return true;            
-            if( element < target) left = mid + 1;
+            else if( element < target) left = mid + 1;
             else right = mid - 1;
         }
         return false;        
