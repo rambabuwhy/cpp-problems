@@ -45,7 +45,7 @@ public:
 
     // Removes the element from in front of queue.
     int pop(void) {
-        this->peek();
+        peek();
         int x=s2.top();
         s2.pop();
         return x;
