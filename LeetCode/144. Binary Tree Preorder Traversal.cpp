@@ -41,6 +41,7 @@ Output: [1,2]
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
@@ -52,14 +53,14 @@ public:
         vector<int> result; 
         while(!stack.empty()) {
            
+            //store
             TreeNode* curr=stack.top();
-            stack.pop();
+            stack.pop();            
+            result.push_back(curr->val); 
             
-            result.push_back(curr->val);
-            
+            //right then left because it is stack
             if(curr->right) stack.push(curr->right);
-            if(curr->left) stack.push(curr->left);
-                       
+            if(curr->left) stack.push(curr->left);                       
         }
         return result;
     }
