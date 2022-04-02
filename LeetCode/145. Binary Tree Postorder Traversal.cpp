@@ -47,8 +47,7 @@ public:
 };
 
 class Solution {
-public:
-    
+public:    
     
     vector<int> postorderTraversal(TreeNode* root) {
     
@@ -56,18 +55,18 @@ public:
         stack<TreeNode*> lstack;
         
         TreeNode *curr = root;
-        while(!lstack.empty() || curr!= nullptr){
+        while(curr || !lstack.empty()) { 
             
             if(curr){
                 lstack.push(curr);
                 result.insert(result.begin(), curr->val);
                 curr = curr->right;
             } else {
-                TreeNode *temp = lstack.top();
+                curr = lstack.top();
                 lstack.pop();
-                curr = temp->left;
+                curr = curr->left;
             }           
-        }
-        return result;
+        }        
+        return result;        
     }
 };
