@@ -19,28 +19,25 @@ public:
         
         int i = nums.size() - 2;
         
-        //step 1: find first decreasing element; skip if decreasing
+        //step 1: find first decreasing element
         while (i >= 0 && nums[i] >= nums[i + 1]) {
             i--;
         }
         
-        //step 2: find j "just" larger than i
+        //step 2: find j "just" larger than i and swap both
+        int j = nums.size() - 1;
         if (i >= 0) {
-            int j = nums.size() - 1;
+            
             while (j >= 0 && nums[i] >= nums[j]) {
                 j--;
-            }
-            
-            //step 3: swap i and j
+            }            
+            //swap i and j
             swap(nums, i, j);
         }
-        
-        //step 4: reverse from i to end
+        //step 3: reverse from i+1 to last element
         reverse(nums.begin()+i+1, nums.end());
         
     }
-    
-  
 
     void swap(vector<int>& nums, int i, int j) {
         int temp = nums[i];
