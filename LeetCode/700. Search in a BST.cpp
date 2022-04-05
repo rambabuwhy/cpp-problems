@@ -17,9 +17,7 @@ class Solution {
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
         
-        if(root == nullptr) return nullptr;
-        cout<<root->val<<endl;
-        
+        if(root == nullptr) return nullptr;        
         while(root) {
             if(root->val == val) return root;
             else if(root->val > val) root = root->left;
