@@ -28,6 +28,8 @@ Output: false
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+//Recursive
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
@@ -45,5 +47,39 @@ public:
         
         //recursive both left and right
         return util(r1->left, r2->right) && util(r1->right, r2->left);
+    }
+};
+
+//Iterative
+
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        
+        queue<TreeNode*> lq;
+        lq.push(root);
+        lq.push(root);
+        
+        while(!lq.empty()){
+            
+            TreeNode *left = lq.front();
+            lq.pop();
+            
+            TreeNode *right=lq.front();
+            lq.pop();
+            
+            if(left == nullptr && right == nullptr) continue;
+            if(left == nullptr || right == nullptr) return false;
+            if(left->val != right->val) return false;
+            
+            lq.push(left->left);
+            lq.push(right->right);
+            
+            lq.push(left->right);
+            lq.push(right->left);
+            
+        }
+        
+        return true;
     }
 };
