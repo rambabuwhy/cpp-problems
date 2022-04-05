@@ -62,21 +62,22 @@ public:
         
         while(!lq.empty()){
             
-            TreeNode *left = lq.front();
+            TreeNode *n1 = lq.front();
             lq.pop();
             
-            TreeNode *right=lq.front();
+            TreeNode *n2=lq.front();
             lq.pop();
             
-            if(left == nullptr && right == nullptr) continue;
-            if(left == nullptr || right == nullptr) return false;
-            if(left->val != right->val) return false;
+            if(n1 == nullptr && n2 == nullptr) continue;
+            if(n1 == nullptr || n2 == nullptr) return false;
+            if(n1->val != n2->val) return false;
             
-            lq.push(left->left);
-            lq.push(right->right);
+            //left of n1  && right of n2
+            lq.push(n1->left);
+            lq.push(n2->right);
             
-            lq.push(left->right);
-            lq.push(right->left);
+            lq.push(n1->right);
+            lq.push(n2->left);
             
         }
         
