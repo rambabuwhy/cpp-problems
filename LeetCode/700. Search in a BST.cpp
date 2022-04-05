@@ -16,23 +16,15 @@ Given the root node of a binary search tree (BST) and a value. You need to find 
 class Solution {
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
+        
         if(root == nullptr) return nullptr;
         cout<<root->val<<endl;
         
         while(root) {
-            if(root->val == val) {
-                return root;
-            }
-            if(root->val > val){
-                root = root->left;
-            }
-            else{
-                root = root->right;
-            }
-            
-        }
-        
-        return nullptr;
-        
+            if(root->val == val) return root;
+            else if(root->val > val) root = root->left;
+            else root = root->right;           
+        }        
+        return nullptr;        
     }
 };
