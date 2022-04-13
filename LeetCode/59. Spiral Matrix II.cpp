@@ -18,15 +18,13 @@ Output: [[1]]
 
 class Solution {
 public:
-    vector<vector<int>> generateMatrix(int n) {
-        
-        vector<vector<int>>  result(n, vector<int>(n));
-        
-        
+    vector<vector<int>> generateMatrix(int n) {        
+       
         int RowStart  = 0, RowEnd = n-1;
         int ColoumStart  = 0, ColoumEnd = n-1;        
         int count = 1;
         
+        vector<vector<int>>  result(n, vector<int>(n));
         while(RowStart <= RowEnd  &&  ColoumStart <=  ColoumEnd){
             
             //left to right
