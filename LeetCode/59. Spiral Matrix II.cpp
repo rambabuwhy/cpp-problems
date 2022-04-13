@@ -2,6 +2,18 @@
 
 Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.
 
+ 
+
+Example 1:
+
+
+Input: n = 3
+Output: [[1,2,3],[8,9,4],[7,6,5]]
+Example 2:
+
+Input: n = 1
+Output: [[1]]
+
 */
 
 class Solution {
@@ -12,8 +24,7 @@ public:
         
         
         int RowStart  = 0, RowEnd = n-1;
-        int ColoumStart  = 0, ColoumEnd = n-1;
-        
+        int ColoumStart  = 0, ColoumEnd = n-1;        
         int count = 1;
         
         while(RowStart <= RowEnd  &&  ColoumStart <=  ColoumEnd){
@@ -42,16 +53,9 @@ public:
             if(ColoumStart <= ColoumEnd) result[i][ColoumStart] = count++;
             
             ColoumStart++;
-            
-            
-            
-            
+          
         }
         
-        return result;
-            
-        
-        
-        
+        return result;        
     }
 };
