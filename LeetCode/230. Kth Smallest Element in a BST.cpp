@@ -33,7 +33,7 @@ Output: 3
 class Solution {
 public:
     
-    //iterative inorder
+    //iterative inorder: left -> process -> right
     int kthSmallest(TreeNode* root, int k) {
         
         stack<TreeNode*> lstack;
@@ -42,16 +42,18 @@ public:
         int result;
         while(curr || !lstack.empty()){
             
+            //left
             while(curr) {
                 lstack.push(curr);
                 curr = curr->left;
             }
             
-            //move right on top of the stack
+            //process
             curr = lstack.top();
             lstack.pop();           
             if(--k == 0) return curr->val;
             
+            //right
             curr = curr->right;
         }
         return result;
