@@ -29,6 +29,7 @@ Output: 3
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     
@@ -39,7 +40,7 @@ public:
         TreeNode* curr = root;
         
         int result;
-        while(true){
+        while(curr || !lstack.empty()){
             
             while(curr) {
                 lstack.push(curr);
@@ -48,8 +49,7 @@ public:
             
             //move right on top of the stack
             curr = lstack.top();
-            lstack.pop();
-           
+            lstack.pop();           
             if(--k == 0) return curr->val;
             
             curr = curr->right;
