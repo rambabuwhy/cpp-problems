@@ -29,15 +29,11 @@ class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
         
-        //reversing all numbers  
-        //reversing first k numbers 
-        //revering last n-k numbers 
-        
-        k = k % nums.size();
+        //reversing all numbers, reversing first k numbers, revering last n-k numbers         
+        k = k % nums.size();   //if k is more than size, then use mod
         reverse(nums, 0, nums.size() - 1);
         reverse(nums, 0, k - 1);
-        reverse(nums, k, nums.size() - 1);
-        
+        reverse(nums, k, nums.size() - 1);        
     }
     
     void reverse(vector<int> &nums, int start, int end) {
