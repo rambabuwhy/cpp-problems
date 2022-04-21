@@ -19,12 +19,14 @@ class Solution {
 public:
     vector<int> sortedSquares(vector<int>& nums) {
         
+        //set stores in increasing order by default
         multiset<int> lset;
         vector<int> sqr(nums.size());        
         for(int i=0; i<nums.size(); i++){
             lset.insert(nums[i] * nums[i]);
         }
         
+        //result should be in vector
         copy(lset.begin(), lset.end(), sqr.begin());        
         return sqr;
     }
