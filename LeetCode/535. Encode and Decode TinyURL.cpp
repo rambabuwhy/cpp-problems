@@ -34,7 +34,7 @@ public:
     string encode(string longUrl) {
         
         string key = to_string(lhash(longUrl));
-        lmap[ key ] = longUrl;
+        lmap[key] = longUrl;
         return key;        
     }
 
