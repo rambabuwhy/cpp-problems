@@ -1,3 +1,3 @@
 # CPP Data Structures and Algorithms
 # Name: Rambabu Yerajana
-# Topic: 500+ Optimized Solutions
+# Topic: 600+ Optimized Solutions
