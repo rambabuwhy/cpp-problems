@@ -22,19 +22,22 @@ to the starting pixel.
 
 class Solution {
 public:
-    void dfs(vector<vector<int>> &image, int r, int c, int currColor, int newColor){
-        if(currColor != image[r][c]) return;
-        //currColor = image[r][c];
-        image[r][c]=newColor;
+
+    void dfs(vector<vector<int>>& image, int sr, int sc, int oldcolor,int newcolor){
         
-        if(r > 0) dfs(image,r-1,c,currColor,newColor);
-        if( c > 0 ) dfs (image,r,c-1,currColor,newColor);
-        if(c+1 < image[0].size()) dfs (image,r,c+1,currColor,newColor);
-        if(r+1 < image.size()) dfs (image,r+1,c,currColor,newColor);
+        if(image[sr][sc] != oldcolor) return; //check if it is old color in current block
+        else  image[sr][sc]=newcolor;  //fill new color
+
+        if(sr>0) dfs(image,sr-1,sc,oldcolor,newcolor);
+        if(sc>0) dfs(image,sr,sc-1,oldcolor,newcolor);
+        if(sr<image.size()-1) dfs(image,sr+1,sc,oldcolor,newcolor);
+        if(sc<image[0].size()-1) dfs(image,sr,sc+1,oldcolor,newcolor);
     }
-    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
-        int color = image[sr][sc];
-        if(color != newColor) dfs(image,sr,sc,image[sr][sc],newColor);
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+
+        if(image[sr][sc] == color) return image;
+        dfs(image,sr,sc,image[sr][sc],color);
         return image;
+        
     }
 };
