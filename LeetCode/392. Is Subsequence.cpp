@@ -24,10 +24,10 @@ public:
 
         while(sl < sr && tl < tr){
 
-            //increment sl only if find char in t
+            //increment pointer sl only if find same char in t
             if(s[sl]==t[tl]) sl++;
 
-            //always increment for string t
+            //always increment pointer for string t
             tl++;
         }
 
