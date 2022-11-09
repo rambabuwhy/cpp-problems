@@ -21,17 +21,34 @@
 
 class Solution {
 public:
-    
+
+    //iterative  -->prev-->curr-->nextTemp-->
+    ListNode* reverseList(ListNode* head) {
+
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        while (curr) {
+            ListNode* nextTemp = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+        return prev;
+        
+    }
+
+    /*
     //recursion
     ListNode* reverseList(ListNode* head) {
         
-        if(head == nullptr || head->next == nullptr)
-        return head;
+        if(head == nullptr || head->next == nullptr) return head;
         
+        // 1->2->3(head)->4(p)->nil
         ListNode *p = reverseList(head->next);
         head->next->next = head;
         head->next = nullptr;
         
         return p;
     }
+    */
 };
