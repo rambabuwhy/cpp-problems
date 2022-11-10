@@ -27,7 +27,11 @@ public:
         
         string stk="";
         for(auto c:s){
+
+            //if same char in last index, then just remove that
             if(stk.size()>0 && c == stk.back())  stk.pop_back();
+
+            //otherwise, just add to result string
             else stk.push_back(c);
         }
         return stk;
