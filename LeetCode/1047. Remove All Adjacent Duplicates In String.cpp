@@ -21,6 +21,8 @@ Output: "ay"
 
 class Solution {
 public:
+
+    //string as stack using back(), push_back() and pop_back() methods
     string removeDuplicates(string s) {
         
         string stk="";
