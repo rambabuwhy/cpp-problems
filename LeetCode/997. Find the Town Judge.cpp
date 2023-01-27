@@ -14,18 +14,18 @@ If the town judge exists and can be identified, return the label of the town jud
 class Solution {
 public:
     int findJudge(int N, vector<vector<int>>& trust) {
-        if(trust.size() < N-1) return -1;
-        vector<int> Deg(N+1);
-        for(auto e:trust){
-            Deg[e[0]]--;
-            Deg[e[1]]++;
-            
-        }
-        for(int i =1;i<=N;i++ ){
-            if(Deg[i]==N-1) return i;
+        
+        //find indegree and outdegree
+        vector<int> degree(N+1);
+        for(auto t:trust){
+            degree[t[0]]--;
+            degree[t[1]]++;
         }
         
+        //judge must have n-1 in degree :- everybody should trust judge
+        for(int i =1; i<=N; i++ ){
+            if(degree[i] == N-1) return i;
+        }
         return -1;
-        
     }
 };
