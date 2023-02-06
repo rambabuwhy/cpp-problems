@@ -31,7 +31,7 @@ Pre-allocating memory for the result vector using reserve can improve the perfor
 */
 
 
-youclass Solution {
+class Solution {
 public:
     vector<int> shuffle(vector<int>& nums, int n) {
         
