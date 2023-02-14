@@ -45,33 +45,20 @@ The key insight behind this solution is that the XOR operation is both commutati
 
 a ^ b = b ^ a (commutativity)
 a ^ b ^ c = a ^ (b ^ c) = (a ^ b) ^ c (associativity)
-With these properties in mind, let's consider the input array [9, 6, 4, 2, 3, 5, 7, 0, 1] and the expected output of 8.
 
-We know that the array contains n distinct numbers in the range [0, n], which means that the array should contain all numbers from 0 to n, except for one missing number.
+Suppose we have an array nums containing n distinct numbers in the range [0, n], except for one number which is missing. The goal is to find the missing number.
 
-The XOR solution takes advantage of this fact by using the XOR operation to "cancel out" all the numbers in the array, except for the missing number. Here's how it works:
+One way to do this is to calculate the sum of all the numbers in the range [0, n], and then subtract the sum of the numbers in the array. 
+The difference between the two sums will be the missing number. However, this approach requires us to iterate over the entire array twice, 
+which has a time complexity of O(n).
 
-Initialize "missing" variable to n, the last number in the range:
+A more efficient solution is to use the XOR operator. The XOR operator has the property that a ^ a = 0 for any number a, and a ^ 0 = a for any number a. 
+This means that if we XOR all the numbers in the range [0, n] together, and then XOR all the numbers in the array together, 
+the result of the two XOR operations will be the missing number.
 
-int missing = nums.size();
-
-Iterate over the array, and for each index i and corresponding element nums[i], perform the following XOR operation:
-
-missing = missing ^ i ^ nums[i];
-
-This operation cancels out the value at the ith index, as well as the index itself, leaving behind only the missing number.
-
-For example, let's consider the first iteration where i=0 and nums[0]=9:
-
-missing = missing ^ i ^ nums[i]
-= 9 ^ 0 ^ 9
-= 0
-
-We can see that the XOR operation has cancelled out the value 9 at index 0, leaving behind only the missing number 8.
-
-Once the iteration is complete, the missing number will be stored in the "missing" variable. In this case, we would return 8.
-
-I hope that explanation helps you understand the logic behind the XOR solution! Let me know if you have any further questions.
+To implement this solution in C++, we can initialize a variable missing to nums.size(), which is one greater than the maximum possible value in the array. 
+We then iterate over the elements in the array and perform an XOR operation between the index i and the element nums[i]. 
+The result of this XOR operation is then XORed with missing. The goal is to cancel out all of the elements in the array, leaving behind only the missing number.
 ------------------------------------------------------------------
 */
 int missingNumber(vector<int>& nums) {
