@@ -1,5 +1,9 @@
 /*
 
+Author: Rambabu Yerajana
+linkedin: https://www.linkedin.com/in/rambabuyerajana/
+problem: Add Binary
+------------------------------------------------------------------
 Problem:
 Given two binary strings a and b, return their sum as a binary string.
 
