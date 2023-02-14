@@ -1,8 +1,11 @@
 /*
+
 Author: Rambabu Yerajana
-problem: Longest Increasing Subsequence
+Linkedin: https://www.linkedin.com/in/rambabuyerajana/
+Problem: Longest Increasing Subsequence
+
 ------------------------------------------------------------------
-Problem:
+Description:
 Given an integer array nums, return the length of the longest strictly increasing 
 subsequence
 .
