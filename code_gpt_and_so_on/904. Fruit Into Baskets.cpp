@@ -1,10 +1,13 @@
 /*
 
+
 Author: Rambabu Yerajana
-linkedin: https://www.linkedin.com/in/rambabuyerajana/
-problem: Fruit Into Baskets
+Linkedin: https://www.linkedin.com/in/rambabuyerajana/
+Problem: Fruit Into Baskets
+
 ------------------------------------------------------------------
-problem:
+
+Description:
 You are visiting a farm that has a single row of fruit trees arranged from left to right. The trees are represented by an integer array fruits where fruits[i] is the type of fruit the ith tree produces.
 
 You want to collect as much fruit as possible. However, the owner has some strict rules that you must follow:
