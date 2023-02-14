@@ -1,10 +1,13 @@
 /*
 
+
 Author: Rambabu Yerajana
-linkedin: https://www.linkedin.com/in/rambabuyerajana/
-problem: Add Binary
+Linkedin: https://www.linkedin.com/in/rambabuyerajana/
+Problem:  Add Binary
+
 ------------------------------------------------------------------
-Problem:
+
+Description:
 Given two binary strings a and b, return their sum as a binary string.
 
  
