@@ -96,3 +96,51 @@ public:
     }
 };
 
+
+//BFS
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        // If the root is null, the depth of the tree is zero
+        if (root == nullptr) {
+            return 0;
+        }
+        
+        int depth = 0;
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while (!q.empty()) {
+            int size = q.size();
+            
+            // Process all nodes at the current level
+            for (int i = 0; i < size; i++) {
+                TreeNode* node = q.front();
+                q.pop();
+                
+                // Add the left and right child nodes to the queue
+                if (node->left != nullptr) {
+                    q.push(node->left);
+                }
+                if (node->right != nullptr) {
+                    q.push(node->right);
+                }
+            }
+            
+            // Increment the depth after processing all nodes at the current level
+            depth++;
+        }
+        
+        // Return the maximum depth of the tree
+        return depth;
+    }
+};
