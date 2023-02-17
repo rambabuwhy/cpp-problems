@@ -1,3 +1,6 @@
+ 
+There are several patterns or techniques that you can use to approach and solve many types of problems. Here are some commonly used patterns:
+
 Brute Force: Start with a simple and naive solution, and try all possible combinations to solve the problem. This is usually the first step to understand the problem and constraints.
 
 Greedy: Choose the locally optimal solution at each step to reach the global optimum. This approach is useful when the problem has a property of "optimal substructure".
