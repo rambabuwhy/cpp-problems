@@ -94,3 +94,61 @@ public:
     }
 };
 
+
+#include <queue>
+
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if (!root) {
+            return NULL;
+        }
+        
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while (!q.empty()) {
+            int size = q.size();
+            
+            for (int i = 0; i < size; i++) {
+                TreeNode* node = q.front();
+                q.pop();
+                
+                // swap the left and right child of the current node
+                TreeNode* temp = node->left;
+                node->left = node->right;
+                node->right = temp;
+                
+                if (node->left) {
+                    q.push(node->left);
+                }
+                
+                if (node->right) {
+                    q.push(node->right);
+                }
+            }
+        }
+        
+        return root;
+    }
+};
+
+/*
+BFS:
+We start by checking if the root node is null. If it is, we return NULL.
+
+We create a queue of TreeNode pointers to store the nodes at each level of the binary tree. We push the root node onto the queue to start the BFS traversal.
+
+While the queue is not empty, we process each level of the binary tree. We first get the size of the queue, which gives us the number of nodes at the current level.
+
+We then loop through the nodes at the current level, popping each node from the front of the queue. For each node, we swap its left and right child using a temporary variable temp.
+
+If the node has a left child, we push it onto the back of the queue. If the node has a right child, we also push it onto the back of the queue.
+
+Once we have processed all the nodes at the current level, we move on to the next level by starting a new loop iteration.
+
+Finally, we return the root node of the inverted binary tree.
+
+The time complexity of this BFS approach is also O(n), where n is the number of nodes in the binary tree, since we visit each node exactly once. However, the space complexity is O(w), where w is the maximum width of the binary tree (i.e., the maximum number of nodes at any level). This is because we use a queue to store the nodes at each level, and the maximum number of nodes at any level is the width of the binary tree.
+
+*/
