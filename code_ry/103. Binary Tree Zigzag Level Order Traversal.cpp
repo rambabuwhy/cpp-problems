@@ -51,84 +51,67 @@ Overall, this solution is an efficient and optimal way to perform a zigzag level
 */
 
 
-#include <iostream>
-#include <vector>
-#include <stack>
-
-using namespace std;
-
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
-
 vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+    // Initialize an empty vector to store the result
     vector<vector<int>> result;
+
+    // Check if the root is NULL, return empty result
     if (root == NULL) {
         return result;
     }
 
+    // Initialize two stacks to store the nodes of the current level and the next level
     stack<TreeNode*> currentLevel;
     stack<TreeNode*> nextLevel;
-    bool leftToRight = true;
+
+    // Add the root node to the current level stack
     currentLevel.push(root);
 
-    while (!currentLevel.empty()) {
-        vector<int> levelValues;
-        int size = currentLevel.size();
+    // Initialize a flag to keep track of the order of traversal
+    bool leftToRight = true;
 
-        for (int i = 0; i < size; i++) {
-            TreeNode* currentNode = currentLevel.top();
+    // Traverse the binary tree using DFS
+    while (!currentLevel.empty()) {
+        // Initialize an empty vector to store the values of nodes in the current level
+        vector<int> levelValues;
+
+        // Traverse all nodes in the current level
+        while (!currentLevel.empty()) {
+            // Pop a node from the current level stack
+            TreeNode* node = currentLevel.top();
             currentLevel.pop();
 
-            levelValues.push_back(currentNode->val);
+            // Add the value of the node to the levelValues vector
+            levelValues.push_back(node->val);
 
+            // Add the children of the node to the next level stack
             if (leftToRight) {
-                if (currentNode->left != NULL) {
-                    nextLevel.push(currentNode->left);
+                if (node->left != NULL) {
+                    nextLevel.push(node->left);
                 }
-                if (currentNode->right != NULL) {
-                    nextLevel.push(currentNode->right);
+                if (node->right != NULL) {
+                    nextLevel.push(node->right);
                 }
             } else {
-                if (currentNode->right != NULL) {
-                    nextLevel.push(currentNode->right);
+                if (node->right != NULL) {
+                    nextLevel.push(node->right);
                 }
-                if (currentNode->left != NULL) {
-                    nextLevel.push(currentNode->left);
+                if (node->left != NULL) {
+                    nextLevel.push(node->left);
                 }
             }
         }
 
+        // Add the levelValues vector to the result vector
         result.push_back(levelValues);
-        leftToRight = !leftToRight;
+
+        // Swap the current level stack and the next level stack
         swap(currentLevel, nextLevel);
+
+        // Reverse the order of traversal for the next level
+        leftToRight = !leftToRight;
     }
 
+    // Return the result vector
     return result;
 }
-
-int main() {
-    // Create a binary tree
-    TreeNode* root = new TreeNode(3);
-    root->left = new TreeNode(9);
-    root->right = new TreeNode(20);
-    root->right->left = new TreeNode(15);
-    root->right->right = new TreeNode(7);
-
-    // Get the zigzag level order traversal of the tree
-    vector<vector<int>> result = zigzagLevelOrder(root);
-
-    // Print the result
-    for (int i = 0; i < result.size(); i++) {
-        for (int j = 0; j < result[i].size(); j++) {
-            cout << result[i][j] << " ";
-        }
-        cout << endl;
-    }
-
-    return 0;
-}
-
