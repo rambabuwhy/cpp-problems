@@ -46,7 +46,57 @@ The space complexity of this solution is also O(n), as we are storing the values
 
 Overall, this solution is an efficient and optimal way to perform a zigzag level order traversal of a binary tree in C++.
 
+--
+Let's say we have the following binary tree:
 
+markdown
+Copy code
+        1
+       / \
+      2   3
+     / \   \
+    4   5   6
+We want to perform a zigzag level order traversal of this tree, which means that we need to traverse the tree in the following order:
+
+Traverse the first level from left to right: 1
+Traverse the second level from right to left: 3, 2
+Traverse the third level from left to right: 4, 5, 6
+So the expected output of the zigzag level order traversal of this tree is:
+
+csharp
+Copy code
+[
+  [1],
+  [3, 2],
+  [4, 5, 6]
+]
+Now let's see how the DFS solution we discussed earlier would traverse this tree:
+
+We start by adding the root node to the current level stack: currentLevel = [1]
+We set the leftToRight flag to true, which means we traverse the nodes from left to right on the first level
+We enter the main loop of the algorithm, which continues until the current level stack is empty:
+We initialize an empty vector levelValues to store the values of nodes in the current level
+We pop a node from the current level stack: node = 1, currentLevel = []
+We add the value of the node to the levelValues vector: levelValues = [1]
+We add the children of the node to the next level stack from left to right: nextLevel = [2, 3]
+We add the levelValues vector to the result vector: result = [[1]]
+We swap the current level stack and the next level stack: currentLevel = [2, 3], nextLevel = []
+We reverse the order of traversal for the next level by setting the leftToRight flag to false
+We continue the loop with the new current level stack:
+We initialize a new empty vector levelValues
+We pop a node from the current level stack: node = 3, currentLevel = [2]
+We add the value of the node to the levelValues vector: levelValues = [3]
+We add the children of the node to the next level stack from right to left: nextLevel = [6]
+We pop another node from the current level stack: node = 2, currentLevel = []
+We add the value of the node to the levelValues vector: levelValues = [3, 2]
+We add the children of the node to the next level stack from right to left: nextLevel = [5, 4]
+We add the levelValues vector to the result vector: result = [[1], [3, 2]]
+We swap the current level stack and the next level stack: currentLevel = [5, 4], nextLevel = []
+We reverse the order of traversal for the next level by setting the leftToRight flag to true
+We continue the loop with the new current level stack:
+We initialize a new empty vector levelValues
+We pop a node from the current level stack: node = 4, currentLevel = [5]
+We add the value of the node to the
 ------------------------------------------------------------------
 */
 
