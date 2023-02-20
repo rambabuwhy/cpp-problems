@@ -55,17 +55,17 @@ The space complexity of this algorithm is O(1), because we only use a constant a
 ------------------------------------------------------------------
 */
 int searchInsert(vector<int>& nums, int target) {
-    int left = 0, right = nums.size() - 1;
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] == target) {
+    int left = 0, right = nums.size() - 1; // initialize pointers to beginning and end of array
+    while (left <= right) { // binary search loop
+        int mid = left + (right - left) / 2; // calculate middle index
+        if (nums[mid] == target) { // target found
             return mid;
-        } else if (nums[mid] < target) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
+        } else if (nums[mid] < target) { // target in right half of array
+            left = mid + 1; // update left pointer to mid + 1
+        } else { // target in left half of array
+            right = mid - 1; // update right pointer to mid - 1
         }
     }
-    return left;
+    return left; // target not found, return insertion index
 }
 
