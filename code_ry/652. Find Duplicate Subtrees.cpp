@@ -60,6 +60,48 @@ This way, we can avoid traversing the same subtree multiple times.
 ------------------------------------------------------------------
 */
 
+
+//Solution 1:
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
+class Solution {
+public:
+    vector<TreeNode*> findDuplicateSubtrees(TreeNode* root) {
+        unordered_map<string, int> m; // map to store serialized subtrees and their counts
+        vector<TreeNode*> res; // vector to store root nodes of duplicate subtrees
+        serialize(root, m, res); // serialize the subtrees and update the map and vector
+        return res;
+    }
+
+private:
+    string serialize(TreeNode* root, unordered_map<string, int>& m, vector<TreeNode*>& res) {
+        if (!root) {
+            return "#"; // represent empty node as a special symbol "#"
+        }
+        string s = to_string(root->val) + "," + serialize(root->left, m, res) + "," + serialize(root->right, m, res); // serialize the subtree
+        if (++m[s] == 2) { // if the subtree appears for the second time, add the root to the result vector
+            res.push_back(root);
+        }
+        return s;
+    }
+};
+
+//Solution 2 same as above
+
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 // A structure to store the subtree and its count
 struct SubtreeInfo {
     string str;     // serialized string representation of the subtree
@@ -98,6 +140,7 @@ public:
     }
 };
 
+//Solution 3:
 //more optimized
 // A more optimized solution could use a hash map to keep track of the subtrees that have already been seen and their frequency.
 //This way, we can avoid traversing the same subtree multiple times.
