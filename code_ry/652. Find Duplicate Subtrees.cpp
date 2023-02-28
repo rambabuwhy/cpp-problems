@@ -35,8 +35,20 @@ Output: [[2,3],[3]]
 ------------------------------------------------------------------
 
 Solution:
+solution 1:
+The findDuplicateSubtrees function takes the root node of a binary tree as input and returns a vector containing the root nodes of all the duplicate subtrees in the tree. 
+It first creates an unordered map m to store the serialized subtrees and their counts, and an empty vector res to store the root nodes of duplicate subtrees. 
+It then calls the serialize function to serialize each subtree in the binary tree, updating m and res as necessary, and finally returns res.
 
-The idea of the solution is to serialize the subtrees of the binary tree and store them in a hash map. Since two subtrees are considered duplicate if they have the same structure with the same node values, we can use a string representation of the subtree to check for duplicates. 
+The serialize function takes a pointer to a TreeNode, a reference to an unordered map m, and a reference to a vector res. 
+It recursively serializes each subtree in the binary tree using a pre-order traversal. If the current node is NULL, it returns a special symbol "#". 
+Otherwise, it serializes the subtree by concatenating the string representation of the current node's value with the serialized strings for the left and right subtrees, separated by commas. 
+It then increments the count of the serialized subtree in the m map, and if the count is 2 (indicating that the subtree has appeared twice), it adds the root node of the subtree to the res vector. 
+Finally, it returns the serialized string for the subtree.
+
+Solution 2:
+The idea of the solution is to serialize the subtrees of the binary tree and store them in a hash map. 
+Since two subtrees are considered duplicate if they have the same structure with the same node values, we can use a string representation of the subtree to check for duplicates. 
 We use a preorder traversal of the binary tree to serialize the subtrees, and null nodes are represented by the symbol #.
 
 The serialize() function recursively serializes a subtree rooted at node. It first serializes the left subtree, then the right subtree, and finally concatenates the serialized strings with the current node's value to form the serialized string representation of the subtree.
