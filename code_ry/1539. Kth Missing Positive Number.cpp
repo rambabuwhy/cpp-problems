@@ -47,6 +47,19 @@ And left represents the number of missing integers up to the mid index. So by su
 
 If the kth missing positive integer is not present in the right half of the array, then we would have updated the search range to the left half of the array, and we would calculate the kth missing positive integer as left + k. Here, left gives the number of missing integers in the left half of the array, and k gives the position of the kth missing positive integer among these missing integers. Adding left to k gives the position of the kth missing positive integer in the array.
 
+
+explain: return left+k:
+Let me explain the return left + k statement.
+
+In the while loop, we are looking for the smallest index left such that the number of missing integers before arr[left] is greater than or equal to k.
+
+Once we find such an index left, we know that the k-th missing positive integer must lie between arr[left-1] and arr[left], and we can calculate the k-th missing positive integer as follows:
+
+The number of missing positive integers between arr[left-1] and arr[left] is equal to arr[left] - arr[left-1] - 1.
+The k-th missing positive integer is located k positions after the last missing positive integer before arr[left], which is equal to arr[left-1] + k.
+Therefore, the return statement calculates the k-th missing positive integer by adding k to the last missing positive integer before arr[left], which is arr[left-1], and returns the result.
+
+I hope this clarifies the logic behind the return statement.
 ------------------------------------------------------------------
 */
 
