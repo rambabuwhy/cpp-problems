@@ -34,6 +34,10 @@ If we find a null node after we've already seen a non-null node, then the binary
 
 ------------------------------------------------------------------
 Notes:
+The time complexity of this solution is O(n), where n is the number of nodes in the binary tree. This is because we are visiting each node in the tree exactly once in a level-order traversal.
+
+The space complexity of this solution is O(w), where w is the maximum width of the binary tree (i.e., the maximum number of nodes at any level). This is because we are using a queue to store the nodes at each level, and the size of the queue will be at most the width of the tree. 
+In the worst case, where the binary tree is a complete binary tree, the width of the tree is O(n), so the space complexity is also O(n) in that case.
 
 
 ------------------------------------------------------------------
