@@ -2,6 +2,7 @@
 
 Author: Rambabu Yerajana
 linkedin: https://www.linkedin.com/in/rambabuyerajana/
+medium: https://rambabuy.medium.com/
 problem: Shuffle the Array
 
 ------------------------------------------------------------------
