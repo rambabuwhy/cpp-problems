@@ -1,4 +1,4 @@
-<h1>The Art of Problem Solving with C++: A Step-by-Step Guide <br>
+<h1>Master the Art of Problem Solving with C++ <br>
 by Rambabu Yerajana</h1>
 
 
