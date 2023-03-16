@@ -2,6 +2,7 @@
 
 Author: Rambabu Yerajana
 Linkedin: https://www.linkedin.com/in/rambabuyerajana/
+medium: https://rambabuy.medium.com/
 Problem: Kth Missing Positive Number
 
 ------------------------------------------------------------------
