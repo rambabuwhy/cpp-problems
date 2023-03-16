@@ -1,3 +1,6 @@
+<h1>Problem Solving with C++</h1>
+
+
 There are several patterns or techniques that you can use to approach and solve many types of problems. Here are some commonly used patterns:
 
 
