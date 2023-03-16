@@ -1,4 +1,5 @@
-<h1>The Art of Problem Solving with C++: A Step-by-Step Guide by Rambabu Yerajana</h1>
+<h1>The Art of Problem Solving with C++: A Step-by-Step Guide <br>
+by Rambabu Yerajana</h1>
 
 
 There are several patterns or techniques that you can use to approach and solve many types of problems. Here are some commonly used patterns:
