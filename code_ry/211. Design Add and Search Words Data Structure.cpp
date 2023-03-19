@@ -59,6 +59,24 @@ This is because each node in the trie requires space to store its is_word flag a
 Overall, the trie data structure provides a relatively efficient solution for storing and searching for words with a time complexity of O(m) per operation, where m is the length of the word being added or searched for. However, the space complexity can be quite large if the number of words and/or their lengths are large.
 
 
+the search_helper function is a recursive function that performs a depth-first search of the trie to search for a word that matches the given search string. It takes two arguments:
+
+node: a pointer to the current node in the trie that we are searching from.
+word: a string representing the remaining portion of the search string that we need to match.
+The search_helper function returns true if it finds a match for the search string in the trie, and false otherwise.
+
+Here's how the search_helper function works:
+
+Base case: If the search string is empty, we check if the is_word flag is set to true for the current node. If it is, we return true to indicate that we have found a match for the search string in the trie. Otherwise, we return false.
+
+Recursive case: If the search string is not empty, we check the first character of the search string. If the character is not a '.', we check if the current node has a child node corresponding to that character. 
+If it does not, we return false to indicate that we did not find a match for the search string in the trie. If it does, we recursively call the search_helper function with the child node as the new current node and the remaining portion of the search string (i.e., the search string with the first character removed) as the new search string.
+
+If the first character of the search string is a '.', we iterate through all child nodes of the current node and recursively call the search_helper function with each child node and the remaining portion of the search string (i.e., the search string with the first character removed) as the new search string. 
+If any of the recursive calls return true, we return true to indicate that we have found a match for the search string in the trie. Otherwise, we return false.
+
+The search_helper function is called by the search method, which initializes the search by calling the search_helper function with the root node of the trie and the search string as arguments.
+
 ------------------------------------------------------------------
 */
 
